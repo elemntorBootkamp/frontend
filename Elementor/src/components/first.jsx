@@ -2,8 +2,9 @@ import { useEffect, useState } from "react"
 import { getById } from "../API/api"
 
 export const User=()=>{
-    const [data,setdata]=useState({name:"undefind"})
-
+   
+  const [data,setdata]=useState({name:"undefind"})
+  
     // getById קריאת שרת לפונקציה 
     useEffect(() => {
         async function fetchData() {
@@ -17,6 +18,6 @@ export const User=()=>{
           
     return<>
     <h1>hello girl!</h1>
-    <h1>{data.name}</h1>
+    <h1>{data.name} 🤩</h1>
     </>
 }
