@@ -1,8 +1,3 @@
- export const User=()=>{
-    
-    
-    return<>
+const User=()=>{
     <h1>hello girl!</h1>
-    <h2>hello 😊😂🤣😁😘😒</h2>
-    </>
 }
