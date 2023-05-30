@@ -6,7 +6,7 @@ import './App.css'
 import {Hello} from"./components/login"
 import { ourStore } from './Redux/myStore'
 
-
+import{User}from "./components/first"
 
 function App() {
   
@@ -17,8 +17,8 @@ function App() {
    
      <Provider store={ourStore}>
       
-      <Hello></Hello>
-      
+      {/* <Hello></Hello> */}
+      <User></User>
       </Provider>
   </>
 
