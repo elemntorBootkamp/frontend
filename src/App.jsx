@@ -6,10 +6,10 @@ import './App.css'
 import {UpdateManagerDatails} from "./components/login"
 import {ShowAllCaterogies} from"./components/login"
 import {ShowAllUsers} from"./components/login"
-
+//import {Botton} from './stories/Button'
 import {SmallComp} from"./components/login"
 import { ourStore } from './Redux/myStore'
-
+import { Page } from './stories/Page'
 
 
 function App() {
@@ -28,6 +28,7 @@ function App() {
     {/* <SmallComp></SmallComp>  */}
       {/* <ShowAllUsers></ShowAllUsers> */}
       <ShowAllCaterogies></ShowAllCaterogies>
+     <Page></Page>
       {/* <UpdateManagerDatails></UpdateManagerDatails>  */}
       
       </Provider>
