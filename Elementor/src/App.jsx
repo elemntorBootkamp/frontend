@@ -5,9 +5,26 @@ import './App.css'
 import { User } from './components/first'
 function App() {
   const [count, setCount] = useState(0)
+import {Hello} from"./components/login"
+import { ourStore } from './Redux/myStore'
 
-  return (
-    <>
+import{User}from "./components/first"
+
+function App() {
+  
+
+  return <>
+ 
+   
+   
+     <Provider store={ourStore}>
+      
+      {/* <Hello></Hello> */}
+      <User></User>
+      </Provider>
+  
+
+    
       <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -30,7 +47,7 @@ function App() {
       </p>
       <User></User>
     </>
-  )
+  
 }
 
-export default App
+export default App()
