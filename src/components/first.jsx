@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { getAll } from "../API/api"
 
 export const User=()=>{
-    const [data,setdata]=useState([])
+    // const [data,setdata]=useState([])
 
    
   const [data,setdata]=useState({name:"undefind"})
