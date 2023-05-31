@@ -10,6 +10,7 @@ export const getAll=async()=>{
     catch(err)
     {
         return err;
+       
     }
 }
 
