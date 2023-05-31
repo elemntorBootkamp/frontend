@@ -20,6 +20,7 @@ export const User=()=>{
        return<>
     <h1>hello girl!</h1>
     <h1>{data.email} 🤩</h1>
+    <h1>{data.name} 🤩</h1>
     </>
           
  
