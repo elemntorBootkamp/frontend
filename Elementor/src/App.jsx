@@ -3,12 +3,13 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import { User } from './components/first'
-function App() {
-  const [count, setCount] = useState(0)
 import {Hello} from"./components/login"
 import { ourStore } from './Redux/myStore'
 
 import{User}from "./components/first"
+function App() {
+  const [count, setCount] = useState(0)
+
 
 function App() {
   
@@ -48,6 +49,6 @@ function App() {
       <User></User>
     </>
   
-}
+} }
 
 export default App()

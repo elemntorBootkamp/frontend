@@ -1,7 +1,7 @@
-const User=()=>{
-    <h1>hello girl!</h1>
 import { useEffect, useState } from "react"
 import { getAll } from "../API/api"
+
+
 
 export const User=()=>{
     const [data,setdata]=useState([])
@@ -23,5 +23,4 @@ export const User=()=>{
     </>
           
  
-  
-}
+    }
