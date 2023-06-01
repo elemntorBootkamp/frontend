@@ -1,17 +1,10 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
 import { Provider } from 'react-redux'
 import './App.css'
-import {UpdateManagerDatails} from "./components/login"
-import {ShowAllCaterogies} from"./components/login"
-import {ShowAllUsers} from"./components/login"
-
-import {SmallComp} from"./components/login"
 import { ourStore } from './Redux/myStore'
-
-
-
+import { Header } from '../src/stories/Header'
+import { BrowserRouter } from 'react-router-dom'
+import { Routing } from '../allrouting'
 function App() {
   // const [count, setCount] = useState(0)
 
@@ -19,21 +12,26 @@ function App() {
     {/* store-יש להגדיר ברכיב
    את המחסן שלנו*/}
 
-{/* <div>hello</div> */}
+    {/* <div>hello</div> */}
 
-   
-   
-     <Provider store={ourStore}>
-       {/* <Data1></Data1> */}
-    {/* <SmallComp></SmallComp>  */}
+
+
+    <Provider store={ourStore}>
+      {/* <Data1></Data1> */}
+      {/* <SmallComp></SmallComp>  */}
       {/* <ShowAllUsers></ShowAllUsers> */}
-      <ShowAllCaterogies></ShowAllCaterogies>
+      {/* <ShowAllCaterogies></ShowAllCaterogies> */}
       {/* <UpdateManagerDatails></UpdateManagerDatails>  */}
+    <BrowserRouter>
+    {/* <Header></Header> */}
+    <Header></Header>
+    <Routing></Routing>
+    </BrowserRouter>
       
-      </Provider>
+    </Provider>
   </>
 
 }
-      
+
 
 export default App
