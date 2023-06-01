@@ -7,11 +7,11 @@ export const User=()=>{
    
   const [data,setdata]=useState({name:"undefind"})
   
-    // getById קריאת שרת לפונקציה 
+    
     useEffect(() => {
         async function fetchData() {
      const response = await getAll();
-         //console.log(response);
+         
 
           setdata(...response)
 
