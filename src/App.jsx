@@ -17,13 +17,9 @@ function App() {
 
 
     <Provider store={ourStore}>
-      {/* <Data1></Data1> */}
-      {/* <SmallComp></SmallComp>  */}
-      {/* <ShowAllUsers></ShowAllUsers> */}
-      {/* <ShowAllCaterogies></ShowAllCaterogies> */}
-      {/* <UpdateManagerDatails></UpdateManagerDatails>  */}
+    
     <BrowserRouter>
-    {/* <Header></Header> */}
+
     <Header></Header>
     <Routing></Routing>
     </BrowserRouter>
