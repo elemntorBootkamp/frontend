@@ -25,6 +25,4 @@ export const User=()=>{
     <h1>{data.name} 🤩</h1>
     </>
           
- 
-  
 }
