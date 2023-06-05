@@ -1,8 +1,5 @@
 import {produce} from 'immer'
 
-//שלב 1- הגדרת אובייקט עם נתונים
-//בנושא מסויים
-//אובייקט זה מכיל את כל המשתנים  הרלוונטיים למכלול הקומפוננות
   const InitialState = {
     userNameManager: "Manager",
     userNamePassword: "😂🤣🤣",
@@ -23,22 +20,9 @@ import {produce} from 'immer'
 }
 
 
-//שלב 2-
-// הגדרת אובייקט חיצוני 
-//מקובל לכנות אותו בסיומת של Reducer
-//מכיר את הנתונים- האובייקט הגלובאלי
+
 export const dataReducer = produce((state, action) => {
-    // return { type: "SET_MANAGER_PASS", payload: newPass }
-    switch (action.type) {
-        case "SET_MANAGER_PASS":
-            state.userNamePassword = action.payload
-            break;
-        case "ADD_NEW_USER":
-            state.users.push(action.payload)
-            break;
-        default:
-            break;
-    }
+    
 }, InitialState)
 
 

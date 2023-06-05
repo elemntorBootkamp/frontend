@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from "axios"
 
 //פונקציית GET כרגע לסתם שרת!!
 //מקבלת משתמש מחפשת אותו ומחזירה את כל הפרטים שלו
@@ -6,10 +6,9 @@ import axios from 'axios'
 export const getAll=async()=>{
     try
     {
-        const response=await axios.get(``)
+        const response=await axios.get(`http://localhost:8080/getAll`)
         return response.data
     }
-    
     catch(err)
     {
         return err;
