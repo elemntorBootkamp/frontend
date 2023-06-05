@@ -2,9 +2,10 @@
 import { Provider } from 'react-redux'
 import './App.css'
 import { ourStore } from './Redux/myStore'
-import { Header } from '../src/stories/Header'
 import { BrowserRouter } from 'react-router-dom'
 import { Routing } from '../allrouting'
+import { Page } from './stories/Page'
+
 function App() {
   
 
@@ -17,10 +18,8 @@ function App() {
 
 
     <Provider store={ourStore}>
-    
     <BrowserRouter>
-
-    <Header></Header>
+    <Page></Page>
     <Routing></Routing>
     </BrowserRouter>
       
