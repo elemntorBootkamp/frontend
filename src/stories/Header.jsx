@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import { Button } from './Button';
 import './header.css';
 
@@ -24,7 +23,7 @@ export const Header = ({ user, onLogin, onLogout, onCreateAccount }) => (
             />
           </g>
         </svg>
-        <h1>Acme</h1>
+        <h1>Elementor</h1>
       </div>
       <div>
         {user ? (
