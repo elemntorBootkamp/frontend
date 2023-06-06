@@ -12,8 +12,13 @@
   "plugins": ["react"],
   "rules": {
     "indent": ["error", "tab"],
-    "linebreak-style": ["error", "unix"],
+    // "linebreak-style": ["error", "unix"],
     "quotes": ["error", "single"],
     "semi": ["warn", "always"]
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
   }
 }
