@@ -1,16 +1,20 @@
+/* eslint-disable no-unused-vars */
+import React from 'react';
 import { useEffect, useState } from 'react';
-// import { getById } from "../API/api"
+import { getAll } from '../API/api';
 
 export const User = () => {
-  const [data] = useState({ name: 'undefind' });
+  // const [data,setdata]=useState([])
+  const [data, setdata] = useState({ name: 'undefind' });
 
-  // getById קריאת שרת לפונקציה
   useEffect(() => {
     async function fetchData() {
-      //פה צריכה להיות קריאת השרת במבנה הבא:
-      //const response = await getById("shifra");
-      // console.log(response);
-      // setdata(response)
+      const response = await getAll();
+      //console.log(response);
+
+      setdata(...response);
+
+      console.log(data);
     }
     fetchData();
   }, []);
@@ -18,6 +22,7 @@ export const User = () => {
   return (
     <>
       <h1>hello girl!</h1>
+      <h1>{data.email} 🤩</h1>
       <h1>{data.name} 🤩</h1>
     </>
   );
