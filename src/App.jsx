@@ -1,36 +1,37 @@
+import React from 'react';
 // import { useState } from 'react'
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
 import { Provider } from 'react-redux';
-import './App.css'
+import './App.css';
 //import {Botton} from './stories/Button'
-import { ourStore } from './Redux/myStore'
+import { ourStore } from './Redux/myStore';
 //import { Page } from './stories/Page'
 //import {Hello} from"./components/login"
 
 
-import{User}from "./components/first"
+import{User}from './components/first';
 
 function App() {
   
 
-  return <>
+	return <>
  
    
    
-     <Provider store={ourStore}>
-       {/* <Data1></Data1> */}
+		<Provider store={ourStore}>
+			{/* <Data1></Data1> */}
    
-     {/* <Page></Page> */}
-      {/* <UpdateManagerDatails></UpdateManagerDatails>  */}
+			{/* <Page></Page> */}
+			{/* <UpdateManagerDatails></UpdateManagerDatails>  */}
 
       
-      {/* <Hello></Hello> */}
-      <User></User>
-      </Provider>
-  </>
+			{/* <Hello></Hello> */}
+			<User></User>
+		</Provider>
+	</>;
 
 }
       
 
-export default App
+export default App;
