@@ -2,9 +2,20 @@ module.exports = {
   env: {
     browser: true,
     es2020: true,
+<<<<<<< Updated upstream
     react: true
+=======
+    node: true,
+    react:true
+>>>>>>> Stashed changes
   },
-  extends: ['eslint:recommended', 'plugin:react/recommended', 'plugin:react/jsx-runtime', 'plugin:react-hooks/recommended', 'plugin:storybook/recommended'],
+  extends: ['eslint:recommended',
+   'plugin:react/recommended', 
+   'plugin:react/jsx-runtime', 
+   'plugin:react-hooks/recommended', 
+   'plugin:storybook/recommended',
+
+  ],
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module'
