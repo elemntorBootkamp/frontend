@@ -8,11 +8,19 @@ export const Login = ({component}) => {
     </>
 }
 //edit/new user
-export const Signup = ({component}) => {
+export const Signup = () => {
     return <>
-        {
-             component=='signup' ? <h1>signup</h1> : <h1>dashbord</h1>
-        }
+       
+          <h1>signup</h1> 
+      
+
+    </>
+
+}
+export const Dashboard = () => {
+    return <>
+            <h1>dashboard</h1>
+      
 
     </>
 

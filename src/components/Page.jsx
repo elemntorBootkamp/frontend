@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Header } from './Header';
-import { Login,Signup } from './main_page';
+import { Dashboard, Login,Signup } from './main_page';
 import '../stories/page.css';
 
 export const Page = () => {
@@ -28,9 +28,9 @@ export const Page = () => {
               componnent == 'logout' ?
                 <Login component='logout'></Login> :
                 componnent == 'signup' ?
-                  <Signup component='signup'></Signup> :
+                  <Signup ></Signup> :
                 componnent == 'dashboard' ?
-                  <Signup component='dashboard'></Signup>:
+                  <Dashboard></Dashboard>:
                   <></>
           }
         </div>
