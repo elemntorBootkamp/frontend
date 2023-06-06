@@ -1,11 +1,12 @@
-import { useState } from 'react';
-import { Header } from './Header';
+import React from 'react';
+//import { useState } from 'react';
+import { Header } from '../components/Header';
 import { Login,Signup } from './main_page';
-import '../stories/page.css';
+//import '../stories/page.css';
 
 export const Page = () => {
   //const [user, setUser] = useState();
-  const [componnent, setcomponent] = useState('')
+  const [componnent, setcomponent] =React.useState('')
 
   return (
     <article>
