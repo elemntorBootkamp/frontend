@@ -1,23 +1,19 @@
-
-import { Link } from 'react-router-dom'
-import { Button } from '../stories/Button'
-
-
-
-//כניסה
-export const Login = () => {
+//ligin/logout
+export const Login = ({component}) => {
     return <>
-        <h1>login</h1>
-        <Button label='login'></Button>
+        {
+            component=='login'? <h1>login</h1> : <h1>logout</h1>
+        }
+
     </>
 }
-
-export const Header = () => {
+//edit/new user
+export const Signup = ({component}) => {
     return <>
-        <ul >
-            <button><Link to='login'>login</Link></button>
-            <button><Link to='login'>signin</Link></button>
-        </ul>
+        {
+             component=='signup' ? <h1>signup</h1> : <h1>dashbord</h1>
+        }
+
     </>
 
 }

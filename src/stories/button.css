@@ -7,23 +7,38 @@
   display: inline-block;
   line-height: 1;
 }
+
 .storybook-button--primary {
   color: white;
-  background-color: #0439fa;
+  background-color: #fc8d8d;
 }
-.storybook-button--secondary {
-  color: #333;
+.storybook-button--primary:hover {
+  background-color: #ffffff;
+  border: solid #fc8d8d 1px;
+  color: #fc8d8d;
+ }
+
+ .storybook-button--secondary {
+  color: #fc8d8d;
   background-color: transparent;
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;
+  border: solid #fc8d8d 1px;
+
 }
+.storybook-button--secondary:hover {
+  background-color:#fc8d8d ;
+  border: solid #ffffff 1px;
+  color: #ffffff;
+ }
 .storybook-button--small {
   font-size: 12px;
   padding: 10px 16px;
 }
+
 .storybook-button--medium {
   font-size: 14px;
   padding: 11px 20px;
 }
+
 .storybook-button--large {
   font-size: 16px;
   padding: 12px 24px;
