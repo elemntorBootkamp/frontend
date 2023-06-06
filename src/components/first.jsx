@@ -2,6 +2,8 @@ import { useEffect, useState } from "react"
 import { getAll } from "../API/api"
 
 export const User=()=>{
+    // const [data,setdata]=useState([])
+
    
 
    
@@ -11,7 +13,7 @@ export const User=()=>{
     useEffect(() => {
         async function fetchData() {
      const response = await getAll();
-         
+         //console.log(response);
 
           setdata(...response)
 
