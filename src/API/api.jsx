@@ -1,9 +1,5 @@
 import axios from "axios"
 
-
-
-const port = import.meta.env.VITE_PORT || 8080
-
 export const getAll=async()=>{
    
     try
