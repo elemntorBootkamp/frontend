@@ -1,4 +1,3 @@
-
 import { Provider } from 'react-redux'
 import './App.css'
 import { ourStore } from './Redux/myStore'
@@ -29,4 +28,4 @@ function App() {
 }
 
 
-export default App
+export default App;
