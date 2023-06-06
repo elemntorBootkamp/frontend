@@ -6,7 +6,6 @@ export const
 
     Header = ({ onLogin, onLogout, ondashbord, onsignup, component }) => (
         <header>
-
             <div className="storybook-header">
                 {/* <img src='./aaa.jpg'></img> */}
                 <div>
@@ -24,11 +23,6 @@ export const
                                 <Button primary size="small" onClick={onsignup} label="Sign up" />
                             </>
                     }
-
-
-
-
-
                 </div>
             </div>
         </header>
