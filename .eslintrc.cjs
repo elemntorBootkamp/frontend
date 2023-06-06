@@ -2,12 +2,8 @@ module.exports = {
   env: {
     browser: true,
     es2020: true,
-<<<<<<< Updated upstream
-    react: true
-=======
     node: true,
     react:true
->>>>>>> Stashed changes
   },
   extends: ['eslint:recommended',
    'plugin:react/recommended', 
