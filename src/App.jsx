@@ -1,37 +1,31 @@
-import React from 'react';
-// import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
-import { Provider } from 'react-redux';
-import './App.css';
-//import {Botton} from './stories/Button'
-import { ourStore } from './Redux/myStore';
-//import { Page } from './stories/Page'
-//import {Hello} from"./components/login"
-
-
-import{User}from './components/first';
+import { Provider } from 'react-redux'
+import './App.css'
+import { ourStore } from './Redux/myStore'
+import { BrowserRouter } from 'react-router-dom'
+import { Routing } from '../allrouting'
+import { Page } from '../src/components/Page'
 
 function App() {
   
 
-	return <>
- 
-   
-   
-		<Provider store={ourStore}>
-			{/* <Data1></Data1> */}
-   
-			{/* <Page></Page> */}
-			{/* <UpdateManagerDatails></UpdateManagerDatails>  */}
+  return <>
+    {/* store-יש להגדיר ברכיב
+   את המחסן שלנו*/}
 
+    {/* <div>hello</div> */}
+
+
+
+    <Provider store={ourStore}>
+    <BrowserRouter>
+    <Page></Page>
+    <Routing></Routing>
+    </BrowserRouter>
       
-			{/* <Hello></Hello> */}
-			<User></User>
-		</Provider>
-	</>;
+    </Provider>
+  </>
 
 }
-      
+
 
 export default App;
