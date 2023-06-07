@@ -26,6 +26,13 @@ export const
                     }
                 </div>
             </div>
+            {
+                component == ''|| component == 'logout' ?
+                <>
+                <label>באתר זה תוכלו לרכוש ולנהל את סביבת הענן של האתר שלכם</label>
+                </>:<></>
+            }
+            
         </header>
     );
 

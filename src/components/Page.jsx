@@ -3,6 +3,7 @@ import React from 'react';
 import { Header } from '../components/Header';
 import { Login } from './login';
 import { Signup } from './signup';
+import { Dashboard } from './Dashboard';
 import './page.css';
 
 export const Page = () => {
@@ -21,18 +22,17 @@ export const Page = () => {
 
       <section className="storybook-page">
         <div className="tip-wrapper">
-          באתר זה תוכלו לרכוש ולנהל את סביבת הענן של האתר שלכם
-        </div>
-        <div>
+        
+        
           {
-            componnent == 'login' ?
-              <Login component='login'></Login> :
+              componnent == 'login' ?<>
+              <Login component='login'></Login></> :
               componnent == 'logout' ?
-                <Login component='logout'></Login> :
-                componnent == 'signup' ?
-                  <Signup ></Signup> :
-                componnent == 'dashboard' ?
-                  <Dashboard></Dashboard>:
+              <Login component='logout'></Login> :
+              componnent == 'signup' ?
+              <Signup ></Signup> :
+              componnent == 'dashboard' ?
+              <Dashboard></Dashboard>:
                   <></>
           }
         </div>
