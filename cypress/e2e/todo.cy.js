@@ -4,7 +4,7 @@ describe("create todo spec", () => {
         cy.visit("http://localhost:3000");
     });
 })
-
+//npx cypress run
 
 
 

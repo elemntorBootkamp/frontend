@@ -15,17 +15,24 @@ export const
                         component == 'login' || component == 'signup' ?
                             <> <Button size="small" onClick={onLogout} label="Log out" />
                                 <Button size="small" onClick={ondashbord} label="dashboard" />
-                            </>:
-                        component=='dashboard'?
-                        <Button size="small" onClick={onLogout} label="Log out" />
-                        :
-                            <>
-                                <Button size="small" onClick={onLogin} label="Log in" />
-                                <Button primary size="small" onClick={onsignup} label="Sign up" />
-                            </>
+                            </> :
+                            component == 'dashboard' ?
+                                <Button size="small" onClick={onLogout} label="Log out" />
+                                :
+                                <>
+                                    <Button size="small" onClick={onLogin} label="Log in" />
+                                    <Button primary size="small" onClick={onsignup} label="Sign up" />
+                                </>
                     }
                 </div>
             </div>
+
+            {
+                component == ''|| component == 'logout' ?
+                <>
+                <label>באתר זה תוכלו לרכוש ולנהל את סביבת הענן של האתר שלכם</label>
+                </>:<></>
+            }
         </header>
     );
 

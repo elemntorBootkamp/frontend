@@ -11,7 +11,7 @@ export const Page = () => {
   const [componnent, setcomponent] =React.useState('')
 
   return (
-    <article>
+    <>
       <Header
         component={componnent}
         onLogin={() => setcomponent('login')}
@@ -22,7 +22,6 @@ export const Page = () => {
 
       <section className="storybook-page">
         <div className="tip-wrapper">
-          באתר זה תוכלו לרכוש ולנהל את סביבת הענן של האתר שלכם
         </div>
         <div>
           {
@@ -38,6 +37,6 @@ export const Page = () => {
           }
         </div>
       </section>
-    </article>
+   </> 
   );
 };
