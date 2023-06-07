@@ -2,7 +2,7 @@ import React from 'react';
 //import { useState } from 'react';
 import { Header } from '../components/Header';
 import { Login,Signup } from './main_page';
-//import '../stories/page.css';
+import './page.css';
 
 export const Page = () => {
   //const [user, setUser] = useState();

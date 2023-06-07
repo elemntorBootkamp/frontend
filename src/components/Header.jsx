@@ -1,7 +1,6 @@
-
 import PropTypes from 'prop-types';
 import { Button } from '../components/Button'
-//import '../stories/header.css';
+import './header.css';
 export const
 
     Header = ({ onLogin, onLogout, ondashbord, onsignup, component }) => (
@@ -24,11 +23,6 @@ export const
                                 <Button primary size="small" onClick={onsignup} label="Sign up" />
                             </>
                     }
-
-
-
-
-
                 </div>
             </div>
         </header>
