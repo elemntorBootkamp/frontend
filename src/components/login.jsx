@@ -1,18 +1,34 @@
-import { useRef } from "react"
-import {  useDispatch } from "react-redux"
-import { useSelector } from "react-redux"
+import '../components/login.css'
+export const Login = ({component}) => {
+    return <>
+        {
+            component=="login"? <><h1>login</h1> 
+            <div class="wrapper fadeInDown">
+  <div id="formContent">
+   
 
+   
+    <div class="fadeIn first">
+      <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" />
+    </div>
 
+   
+    <form>
+      <input type="text" id="login" class="fadeIn second" name="login" placeholder="login"/>
+      <input type="text" id="password" class="fadeIn third" name="login" placeholder="password"/>
+      <input type="submit" class="fadeIn fourth" value="Log In"/>
+      </form>
 
+  
+    <div id="formFooter">
+      <a class="underlineHover" href="#">Forgot Password?</a>
+    </div>
 
-// export const Hello = () => {
-//     let usersFromStore = useSelector((myStore) => {
+  </div>
+</div>
+            </>: <h1>logout</h1>
+           
+        }
 
-//         return myStore.userNamePassword
-//     })
-//     return <>
-        
-//         <p>Hello{usersFromStore}</p>
-//     </>
-// }
-
+    </>
+}

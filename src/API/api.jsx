@@ -1,13 +1,10 @@
 import axios from "axios"
 
-
-const port = import.meta.env.VITE_PORT || 8080
-
 export const getAll=async()=>{
-   
+    const port = import.meta.env.VITE_PORT || 8090
     try
     {
-        const response=await axios.get(`http://localhost:8090/api/getAll`)
+        const response=await axios.get(`http://localhost:${port}/api/getAll`)
         return response.data
         
     }
