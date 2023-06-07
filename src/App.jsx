@@ -9,14 +9,10 @@ import { Page } from '../src/components/Page'
 function App() {
   
 
-  return <>
-    {/* store-יש להגדיר ברכיב
+	return <>
+		{/* store-יש להגדיר ברכיב
    את המחסן שלנו*/}
-
-    {/* <div>hello</div> */}
-
-
-
+		{/* <div>hello</div> */}
     <Provider store={ourStore}>
     <BrowserRouter>
     <Page></Page>

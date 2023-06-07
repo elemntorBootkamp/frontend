@@ -15,6 +15,7 @@ export const Button = ({ primary, backgroundColor, size, label, ...props }) => {
   );
 };
 
+
 Button.propTypes = {
   primary: PropTypes.bool,
   backgroundColor: PropTypes.string,

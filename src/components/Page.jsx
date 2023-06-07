@@ -30,9 +30,9 @@ export const Page = () => {
               componnent == 'logout' ?
                 <Login component='logout'></Login> :
                 componnent == 'signup' ?
-                  <Signup component='signup'></Signup> :
+                  <Signup ></Signup> :
                 componnent == 'dashboard' ?
-                  <Signup component='dashboard'></Signup>:
+                  <Dashboard></Dashboard>:
                   <></>
           }
         </div>
