@@ -1,11 +1,13 @@
-import { useState } from 'react';
-import { Header } from './Header';
-import { Login,Signup } from './main_page';
-import '../stories/page.css';
+import React from 'react';
+//import { useState } from 'react';
+import { Header } from '../components/Header';
+import { Login } from './login';
+import { Signup } from './signup';
+import './page.css';
 
 export const Page = () => {
   //const [user, setUser] = useState();
-  const [componnent, setcomponent] = useState('')
+  const [componnent, setcomponent] =React.useState('')
 
   return (
     <article>
@@ -28,9 +30,9 @@ export const Page = () => {
               componnent == 'logout' ?
                 <Login component='logout'></Login> :
                 componnent == 'signup' ?
-                  <Signup component='signup'></Signup> :
+                  <Signup ></Signup> :
                 componnent == 'dashboard' ?
-                  <Signup component='dashboard'></Signup>:
+                  <Dashboard></Dashboard>:
                   <></>
           }
         </div>

@@ -1,4 +1,4 @@
-import { Button } from './Button';
+import { Button } from '../components/Button';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 export default {
@@ -22,6 +22,8 @@ export const Primary = {
 export const Secondary = {
 	args: {
 		label: 'Button',
+		backgroundColor:'red',
+		size:'small'
 	},
 };
 
