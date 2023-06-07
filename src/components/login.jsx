@@ -1,8 +1,11 @@
-export const Login = ({component}) => {
+import { useParams } from "react-router"
+
+export const Login = () => {
+  let params=useParams()
     return <>
-        {
-            component=="login"? <h1>login</h1> : <h1>logout</h1>
-        }
+      {
+       params.component.localeCompare('login')==0?<h1>login</h1>:<h1>logout</h1>
+      }
 
     </>
 }
