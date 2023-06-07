@@ -1,7 +1,8 @@
 import React from 'react';
 //import { useState } from 'react';
 import { Header } from '../components/Header';
-import { Login,Signup } from './main_page';
+import { Login } from './login';
+import { Signup } from './signup';
 import './page.css';
 
 export const Page = () => {
