@@ -1,3 +1,4 @@
+import React from 'react';
 import { Provider } from 'react-redux'
 import './App.css'
 import { ourStore } from './Redux/myStore'
@@ -11,19 +12,14 @@ function App() {
 	return <>
 		{/* store-יש להגדיר ברכיב
    את המחסן שלנו*/}
-
 		{/* <div>hello</div> */}
-
-
-
-		<Provider store={ourStore}>
-			<BrowserRouter>
-				<Page></Page>
-				<Routing></Routing>
-			</BrowserRouter>
-      
-		</Provider>
-	</>
+    <Provider store={ourStore}>
+    <BrowserRouter>
+    <Page></Page>
+    <Routing></Routing>
+    </BrowserRouter>
+    </Provider>
+  </>
 
 }
 

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import '../stories/button.css';
+import './button.css'
 
 
 export const Button = ({ primary, backgroundColor, size, label, ...props }) => {
@@ -15,6 +15,7 @@ export const Button = ({ primary, backgroundColor, size, label, ...props }) => {
     </button>
   );
 };
+
 
 Button.propTypes = {
 
