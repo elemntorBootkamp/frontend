@@ -1,18 +1,8 @@
-import { useRef } from "react"
-import {  useDispatch } from "react-redux"
-import { useSelector } from "react-redux"
-
-
-
-
-export const Hello = () => {
-    let usersFromStore = useSelector((myStore) => {
-
-        return myStore.userNamePassword
-    })
+export const Login = ({component}) => {
     return <>
-        
-        <p>Hello{usersFromStore}</p>
+        {
+            component=="login"? <h1>login</h1> : <h1>logout</h1>
+        }
+
     </>
 }
-
