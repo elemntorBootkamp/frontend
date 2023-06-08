@@ -1,5 +1,4 @@
-
-.storybook-button {
+  .storybook-button {
     color: white;
     font-weight: bold;
     background-color: blueviolet;
@@ -16,25 +15,28 @@
     display: inline-block;
     line-height: 1;
   }
+  
   .storybook-button--primary {
     color: white;
-    background-color: #B1EE50;
-    border: solid #B1EE50 1px;
+    background-color: #b1ee50;
+    border: solid #b1ee50 1px;
   }
   .storybook-button--primary:hover {
-    background-color: #FFFFFF;
-    border: solid #B1EE50 1px;
-    color: #B1EE50;
+    background-color:#333;
+    border: solid #b1ee50 1px;
+    color: #b1ee50;
    }
+  
    .storybook-button--secondary {
-    color: #B1EE50;
+    color: #b1ee50;
     background-color: transparent;
-    border: solid #B1EE50 1px;
+    border: solid #b1ee50 1px;
+  
   }
   .storybook-button--secondary:hover {
     background-color:#b1ee50 ;
-    border: solid #FFFFFF 1px;
-    color: #FFFFFF;
+    border: solid #ffffff 1px;
+    color: #ffffff;
    }
   .storybook-button--small {
     font-size: 12px;
@@ -47,15 +49,4 @@
   .storybook-button--large {
     font-size: 16px;
     padding: 12px 24px;
-  }
-  .storybook-button--xl {
-    font-size: 16px;
-    padding: 12px 24px;
-    width: 500px;
-  }
-
-  .storybook-button--mydesign {
-    color: #7f50ee;
-    background-color: transparent;
-    border: solid #B1EE50 1px;
   }
