@@ -9,6 +9,7 @@ import { Page } from "./src/components/Page"
 export const Routing=()=>{
 return<>
 <Routes>
+    <Route path="mainpage" element={<Page/>}></Route>
     <Route path="login/:component" element={<Login/>} />
     <Route path="signup" element={<Signup/>}/>
     <Route path="dashboard" element={<Dashboard/>}/>

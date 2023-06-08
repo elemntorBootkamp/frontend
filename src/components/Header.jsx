@@ -31,7 +31,7 @@ export const
                     </div>
                 </div>
                 {
-                    component.localeCompare('') == 0 || component.localeCompare('logout') == 0 ?
+                    component.localeCompare('') == 0 ?
                         <>
                             <label>באתר זה תוכלו לרכוש ולנהל את סביבת הענן של האתר שלכם</label>
                         </> : <></>

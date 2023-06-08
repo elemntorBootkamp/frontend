@@ -23,7 +23,7 @@ export const Page = () => {
         
         onLogout={() => {
         navigate(`login/${logout}`)
-        setcomponent('logout')}}
+        setcomponent('')}}
 
         ondashbord={() => {
         navigate('/dashboard')
