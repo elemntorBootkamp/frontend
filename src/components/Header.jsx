@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { Button } from '../components/Button'
 import './header.css';
+import { Secondary } from '../stories/Button.stories';
 export const
 
     Header = ({ onLogin, onLogout, ondashbord, onsignup, component }) => (
@@ -13,8 +14,8 @@ export const
                 <div>
                     {
                         component == 'login' || component == 'signup' ?
-                            <> <Button size="small" onClick={onLogout} label="Log out" />
-                                <Button size="small" onClick={ondashbord} label="dashboard" />
+                            <> <Button primary={false} size="small"  onClick={onLogout} label="Log out" />
+                                <Button primary size="small" onClick={ondashbord} label="dashboard" />
                             </>:
                         component=='dashboard'?
                         <Button size="small" onClick={onLogout} label="Log out" />
