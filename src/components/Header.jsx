@@ -30,7 +30,7 @@ export const
             {
                 component == ''|| component == 'logout' ?
                 <>
-                <label>באתר זה תוכלו לרכוש ולנהל את סביבת הענן של האתר שלכם</label>
+                <label>On this website you can purchase and manage your website's cloud environment</label>
                 </>:<></>
             }
             
