@@ -7,7 +7,6 @@ import { useNavigate } from 'react-router';
 export const Page = () => {
   const [componnent, setcomponent] =React.useState('')
   let navigate=useNavigate()
-
   let login='login'
   let logout='logout'
   return (
