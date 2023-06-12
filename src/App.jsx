@@ -1,6 +1,6 @@
 import React from 'react';
 import { ReactKeycloakProvider } from "@react-keycloak/web";
-import keycloak from './Keycloak';
+import {keycloak} from './Keycloak';
 import { Provider } from 'react-redux'
 import './App.css'
 import { ourStore } from './Redux/myStore'
