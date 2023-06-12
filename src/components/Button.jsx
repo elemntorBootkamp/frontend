@@ -18,14 +18,12 @@ export const Button = ({ primary, backgroundColor, size, label, ...props }) => {
 
 Button.propTypes = {
   primary: PropTypes.bool,
-  backgroundColor: PropTypes.string,
   size: PropTypes.oneOf(['small', 'medium', 'large','xl']),
   label: PropTypes.string.isRequired,
   onClick: PropTypes.func,
 };
 
 Button.defaultProps = {
-  backgroundColor: null,
   primary: false,
   size: 'medium',
   onClick: undefined,
