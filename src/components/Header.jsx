@@ -14,12 +14,12 @@ export const
                     </div>
                     <div>
                         {
-                            component.localeCompare('login')==0 || component.localeCompare('signup')==0?
+                            component.localeCompare('login')===0 || component.localeCompare('signup')===0?
                                 <> <Button size="small" onClick={onLogout} label="Log out" />
                                     <Button size="small" onClick={ondashbord} label="dashboard" />
                                 </>
                                 :
-                                component.localeCompare('dashboard')==0 ?
+                                component.localeCompare('dashboard')===0 ?
                                     <Button size="small" onClick={onLogout} label="Log out" />
                                     :
                                     <>
@@ -31,7 +31,7 @@ export const
                     </div>
                 </div>
                 {
-                    component.localeCompare('') == 0 ?
+                    component.localeCompare('') === 0 ?
                         <>
                             <label>באתר זה תוכלו לרכוש ולנהל את סביבת הענן של האתר שלכם</label>
                         </> : <></>

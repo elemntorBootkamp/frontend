@@ -1,9 +1,6 @@
 import React from 'react';
-//import { useState } from 'react';
 import { Header } from '../components/Header';
-import { Login } from './login';
-import { Signup } from './signup';
-import { Dashboard } from './Dashboard';
+
 import './page.css';
 import { useNavigate } from 'react-router';
 
