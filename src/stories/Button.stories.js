@@ -4,24 +4,21 @@ export default {
   title: 'Button',
   component: Button,
   tags: ['autodocs'],
-  argTypes: {
-    backgroundColor: { control: 'color' },
-  },
 };
 
 export const Primary = {
 	args: {
 		primary: true,
+		size: 'medium',
 		label: 'Button',
 	},
 };
 
-export const Secondary = {
+export const withoutBackground = {
 	args: {
-		secondary : true,
+		primary: false,
+		size: 'medium',
 		label: 'Button',
-		backgroundColor:'red',
-		size:'small'
 	},
 };
 
