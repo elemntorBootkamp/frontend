@@ -5,6 +5,7 @@ import { ourStore } from './Redux/myStore'
 import { BrowserRouter } from 'react-router-dom'
 import { Routing } from '../allrouting'
 import { Page } from '../src/components/Page'
+import{User} from "./components/first"
 
 function App() {
   
@@ -18,6 +19,7 @@ function App() {
     <Page></Page>
     <Routing></Routing>
     </BrowserRouter>
+    <User></User>
     </Provider>
   </>
 
