@@ -9,3 +9,4 @@ test('renders the component with the correct text', () => {
 	const rezult = sum(1,2);
 	expect(rezult).toBe(3);
 });
+
