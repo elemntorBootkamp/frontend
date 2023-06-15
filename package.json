@@ -11,7 +11,9 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "test": "jest",
+    "configure-husky": "npx husky install && npx husky add .husky/pre-commit \"npx --no-install lint-staged\""
   },
   "dependencies": {
     "@react-keycloak/web": "^3.4.0",
@@ -55,5 +57,15 @@
     "puppeteer": "^20.5.0",
     "storybook": "^7.0.18",
     "vite": "^4.3.2"
+  },
+   "lint-staged": {
+    "**/*.{js,jsx}": [
+      "eslint . --fix"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
   }
 }
