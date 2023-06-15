@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
-import '../stories/button.css';
-
+import './button.css'
 
 export const Button = ({ primary, backgroundColor, size, label, ...props }) => {
   const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
@@ -16,17 +15,15 @@ export const Button = ({ primary, backgroundColor, size, label, ...props }) => {
   );
 };
 
-Button.propTypes = {
 
+Button.propTypes = {
   primary: PropTypes.bool,
-  backgroundColor: PropTypes.string,
-  size: PropTypes.oneOf(['small', 'medium', 'large']),
+  size: PropTypes.oneOf(['small', 'medium', 'large','xl']),
   label: PropTypes.string.isRequired,
   onClick: PropTypes.func,
 };
 
 Button.defaultProps = {
-  backgroundColor: null,
   primary: false,
   size: 'medium',
   onClick: undefined,
