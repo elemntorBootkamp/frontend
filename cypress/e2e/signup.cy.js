@@ -1,5 +1,5 @@
 
-describe('Signup Component', () => {
+describe(' check Signup Component', () => {
     beforeEach(() => {
       cy.visit('http://localhost:3000/signup')
     })
