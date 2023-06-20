@@ -1,8 +1,10 @@
-import { Route,Routes } from "react-router"
-
+/* eslint-disable react/react-in-jsx-scope */
+import { Routes } from 'react-router';
+ 
 export const Routing=()=>{
-return<>
-<Routes>
-</Routes>
-</>
-}
+	// eslint-disable-next-line react/react-in-jsx-scope
+	return <>
+		<Routes>
+		</Routes>
+	</>;
+};
