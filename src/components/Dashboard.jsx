@@ -33,7 +33,7 @@ export const Dashboard = () => {
                 </>)
         }
     <div className="chat-popup" id="myForm">
-            <form action="/action_page.php" className="form-container">
+            <form  className="form-container">
                
          {Object.keys(currentWebSite).map((key, index) => {
         return (
@@ -45,7 +45,7 @@ export const Dashboard = () => {
           </div>
         );
       })} 
-        <Button primary size="large"  label="edit" />
+        <Button primary size="large" onClick={()=>{navigate('/edit')}} label="edit" />
         <br></br>
         <br></br>
 
