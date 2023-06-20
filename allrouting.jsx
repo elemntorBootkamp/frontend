@@ -3,6 +3,7 @@ import { Login } from "./src/components/login";
 import { Signup } from "./src/components/signup";
 import { Dashboard } from "./src/components/Dashboard";
 import { Page } from "./src/components/Page";
+import { Details } from "./src/components/details";
 
 
 
@@ -13,6 +14,7 @@ return<>
     <Route path="login/:component" element={<Login/>} />
     <Route path="signup" element={<Signup/>}/>
     <Route path="dashboard" element={<Dashboard/>}/>
+    <Route path="moredetails/:titel" element={<Details/>}/>
 </Routes>
 </>
 }

@@ -1,0 +1,8 @@
+.div_website{
+    display: inline-block;
+    width: 20%;
+    margin-left: 5px;
+    margin-top: 30px;
+    border-radius: 10px;
+    border: solid #b1ee50 2px;
+}

@@ -16,6 +16,40 @@ import {produce} from 'immer'
         { idUsers: 2, name: "יעל", typeUser: [2, 4], basket: [] },
         { idUsers: 3, name: "שושי", typeUser: [1, 4], basket: [] },
         { idUsers: 3, name: "שירה", typeUser: [3], basket: [] },
+    ],
+     allWebsite :[
+        {
+            title: "aaa",
+            description: "aaa",
+            type_of_domain: "qwert",
+            cpu: "qwert",
+            memory: "123452",
+            status: "qwer"
+        },
+        {
+            title: "bbb",
+            description: "bbb",
+            type_of_domain: "66666",
+            cpu: "bbb",
+            memory: "123456",
+            status: "bbb"
+        },
+        {
+            title: "uuu",
+            description: "uuu",
+            type_of_domain: "uuu",
+            cpu: "uuu",
+            memory: "777777",
+            status: "uuu"
+        },
+        {
+            title: "ccc",
+            description: "ccc",
+            type_of_domain: "ccc",
+            cpu: "ccc",
+            memory: "00000",
+            status: "ccc"
+        }
     ]
 }
 
