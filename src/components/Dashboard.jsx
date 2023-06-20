@@ -1,57 +1,66 @@
-import { Details } from "./details"
-import './dashboard.css'
 import { Button } from "./Button"
 import { useState } from "react"
 import { useNavigate } from "react-router"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import './dashboard.css'
+import { set_current_websie } from "../redux/dataActions"
 
 function openForm() {
     document.getElementById("myForm").style.display = "block";
-  }
-  
-  function closeForm() {
+}
+
+function closeForm() {
     document.getElementById("myForm").style.display = "none";
-  }
+}
 
 export const Dashboard = () => {
-    let navigate=useNavigate()
+    let navigate = useNavigate()
+    let dispatch=useDispatch()
     const allWebsite = useSelector(state => state.allWebsite)
-    const [currentWebSite,setcurrentWebSite]=useState({})
+    const [currentWebSite, setcurrentWebSite] = useState({})
     return <>
         {
             allWebsite.map((website) =>
                 <>
                     <div className="div_website">
                         <h1>{website.title}</h1>
-                        <Button primary size="large" onClick={()=>{
+                        <Button primary size="large" onClick={() => {
                             setcurrentWebSite(website)
                             openForm()
-                        }} label="details"/>     
+                        }} label="details" />
                         <br></br>
                         <br></br>
                     </div>
                 </>)
         }
-    <div className="chat-popup" id="myForm">
-            <form  className="form-container">
-               
-         {Object.keys(currentWebSite).map((key, index) => {
-        return (
-          <div key={index}>
-            <h2>
-              {key}: {currentWebSite[key]}
-            </h2>
-            <hr />
-          </div>
-        );
-      })} 
-        <Button primary size="large" onClick={()=>{navigate('/edit')}} label="edit" />
-        <br></br>
-        <br></br>
+        {
+            currentWebSite !== undefined && currentWebSite !== null
+            &&
+            <div className="chat-popup" id="myForm">
+                <form className="form-container">
 
-        <Button primary size="large" onClick={closeForm} label="close" />
+                    {Object.keys(currentWebSite).map((key, index) => {
+                        return (
+                            <div key={index}>
+                                <h2>
+                                    {key}: {currentWebSite[key]}
+                                </h2>
+                                <hr />
+                            </div>
+                        );
+                    })}
+                    <Button primary size="large" onClick={() => { 
+                        dispatch(set_current_websie(currentWebSite))
+                        navigate(`/edit/${currentWebSite.title}`) 
+                        }} label="edit" />
+                    <br></br>
+                    <br></br>
 
-            </form>
-        </div> 
-        </>
+                    <Button primary size='large' onClick={closeForm} label="close" />
+
+                </form>
+            </div>
+        }
+
+    </>
 }

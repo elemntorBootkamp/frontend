@@ -15,7 +15,7 @@ return<>
     <Route path="login/:component" element={<Login/>} />
     <Route path="signup" element={<Signup/>}/>
     <Route path="dashboard" element={<Dashboard/>}/>
-    <Route path="edit" element={<Edit/>}/>
+    <Route path="edit/:titel" element={<Edit/>}/>
     <Route path="moredetails/:titel" element={<Details/>}/>
 </Routes>
 </>

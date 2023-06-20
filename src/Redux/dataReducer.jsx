@@ -50,13 +50,20 @@ import {produce} from 'immer'
             memory: "00000",
             status: "ccc"
         }
-    ]
+    ],
+    currentWebsit:{}
 }
 
 
 
 export const dataReducer = produce((state, action) => {
-    
+    switch (action.type) {
+        case "SET_CURRENT_WEBSITE":
+            state.currentWebsit = action.payload
+            break;
+        default:
+            break;
+    }
 }, InitialState)
 
 
