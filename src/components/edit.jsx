@@ -3,10 +3,26 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { Button } from "./Button";
+import MenuItem from '@mui/material/MenuItem';
 import './edit.css'
 
 
 export const Edit = () => {
+    let currencies = [
+        { value: 'Intel Core i3', label: 'Intel Core i3' },
+        { value: 'Intel Core i5', label: 'Intel Core i5', },
+        { value: 'Intel Core i7', label: 'Intel Core i7', },
+        { value: 'Intel Xeon', label: 'Intel Xeon', },
+        { value: 'AMD Ryzen 3', label: 'AMD Ryzen 3', },
+        { value: 'AMD Ryzen 5', label: 'AMD Ryzen 5', },
+        { value: 'AMD Ryzen 7', label: 'AMD Ryzen 7', },
+        { value: 'ARM Cortex-A53', label: 'ARM Cortex-A53', },
+        { value: 'ARM Cortex-A72', label: 'ARM Cortex-A72', },
+        { value: 'ARM Cortex-A73', label: 'ARM Cortex-A73', },
+
+
+    ];
+
 
     const website = useSelector(state => state.currentWebsit)
     const [currentWebSite, setcurrentWebSite] = React.useState(website)
@@ -57,7 +73,7 @@ export const Edit = () => {
             sethelperTextDescribtion('Can contain English letters and spirits only')
         }
         else {
-            setDescribtion({ error: true })
+            setErrorDescribtion({ error: false })
             sethelperTextDescribtion('')
             let object = { ...currentWebSite }
             object.description = d
@@ -66,25 +82,30 @@ export const Edit = () => {
 
     }
     function setType_of_domain(t) {
-        if(t.length>63)
-        {
-            seterrorType_of_domain({error:true})
+        if (t.length > 63) {
+            seterrorType_of_domain({ error: true })
             sethelperTextType_of_domain('Maximum length 63 characters')
         }
-        else if(t.length==0)
-        {
-            seterrorType_of_domain({error:true})
+        else if (t.length == 0) {
+            seterrorType_of_domain({ error: true })
             sethelperTextType_of_domain('required')
         }
-        else
-        {
-            seterrorType_of_domain({error:false})
+        else if (!/^[a-zA-Z0-9-]+$/.test(t)) {
+            seterrorType_of_domain({ error: true })
+            sethelperTextType_of_domain('Can only contain English letters, numbers and dashes')
+        }
+        else if (t[t.length - 1] === '-') {
+            seterrorType_of_domain({ error: true })
+            sethelperTextType_of_domain('A hyphen cannot appear at the end')
+        }
+        else {
+            seterrorType_of_domain({ error: false })
             sethelperTextType_of_domain('')
             let object = { ...currentWebSite }
             object.type_of_domain = t
-            setcurrentWebSite(object )
+            setcurrentWebSite(object)
         }
-      
+
     }
     function setCpu(c) {
         let object = { ...currentWebSite }
@@ -92,7 +113,6 @@ export const Edit = () => {
         setcurrentWebSite(object)
     }
     function setMemory(m) {
-
         if (!/^\d+$/.test(m)) {
             seterroMemory({ error: true })
             sethelperTextMemory('Can only contain numbers')
@@ -117,20 +137,25 @@ export const Edit = () => {
         setcurrentWebSite(object)
     }
     function postNewWebsiteToTheServer() {
-        console.log(currentWebSite);
+        if (
+            errorDescribtion.error === true ||
+            errorMemory.error === true ||
+            errorState.error === true ||
+            errorTitle.error === true ||
+            errorType_of_domain.error === true
+        )
+            alert("The form is incorrect, it is not possible to save changes");//לא תקין
     }
-
+   
     const [errorTitle, setErrorTitel] = React.useState({})
     const [errorDescribtion, setErrorDescribtion] = React.useState({})
     const [errorType_of_domain, seterrorType_of_domain] = React.useState({})
-    const [errorCpu, seterroCpu] = React.useState({})
     const [errorMemory, seterroMemory] = React.useState({})
     const [errorState, seterroState] = React.useState({})
 
     const [helperTextTitle, sethelperTextTitel] = React.useState()
     const [helperTextDescribtion, sethelperTextDescribtion] = React.useState()
     const [helperTextType_of_domain, sethelperTextType_of_domain] = React.useState()
-    const [helperTextCpu, sethelperTextCpu] = React.useState()
     const [helperTextMemory, sethelperTextMemory] = React.useState()
     const [helperTextState, sethelperTextState] = React.useState()
     return <>
@@ -177,13 +202,18 @@ export const Edit = () => {
                 />
                 <br></br>
                 <TextField
-                    {...errorCpu}
-                    id="standard-error"
+                    id="standard-select-currency"
+                    select
                     label="Cpu"
-                    defaultValue={currentWebSite.cpu}
                     variant="standard"
                     onChange={(e) => setCpu(e.target.value)}
-                />
+                >
+                    {currencies.map((option) => (
+                        <MenuItem key={option.value} value={option.value}>
+                            {option.label}
+                        </MenuItem>
+                    ))}
+                </TextField>
                 <br></br>
                 <TextField
                     {...errorMemory}

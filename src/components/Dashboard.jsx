@@ -22,7 +22,7 @@ export const Dashboard = () => {
         {
             allWebsite.map((website) =>
                 <>
-                    <div className="div_website">
+                    <div key="{website}" className="div_website">
                         <h1>{website.title}</h1>
                         <Button primary size="large" onClick={() => {
                             setcurrentWebSite(website)
