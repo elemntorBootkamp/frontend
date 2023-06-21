@@ -1,6 +1,6 @@
 /* eslint-disable react/react-in-jsx-scope */
 import { Route,Routes } from 'react-router';
-import { Login } from './src/components/login';
+import { Login } from './src/components/login';  
 import { Signup } from './src/components/signup';
 import { Dashboard } from './src/components/Dashboard';
 import { Page } from './src/components/Page';
