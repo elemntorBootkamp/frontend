@@ -14,14 +14,15 @@ export const getAll=async()=>{
     }
 }
 
-export const updateWebsite=async()=>{
-   alert(import.meta.env.PORT+'/api/Update')
-    //  await axios.get(import.meta.env.PORT+'/api/Update')
-    //   .then((res)=>{
-    //   return res.data
-    //   })
-    //   .catch((err)=>{
-    //    return err
-    //   })    
+export const updateWebsite=async(website)=>{
+     await axios.put('http://localhost:8090/website/update',website)
+      .then((res)=>{
+      console.log(res.data); 
+      return res.data
+      })
+      .catch((err)=>{
+       console.log(err);
+       return err
+      })    
 }
 

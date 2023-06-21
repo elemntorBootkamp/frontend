@@ -21,8 +21,8 @@ export const Dashboard = () => {
     return <>
         {
             allWebsite.map((website) =>
-                <>
-                    <div key="{website}" className="div_website">
+                
+                    <div key={website.title} className="div_website">
                         <h1>{website.title}</h1>
                         <Button primary size="large" onClick={() => {
                             setcurrentWebSite(website)
@@ -31,7 +31,7 @@ export const Dashboard = () => {
                         <br></br>
                         <br></br>
                     </div>
-                </>)
+                )
         }
         {
             currentWebSite !== undefined && currentWebSite !== null
