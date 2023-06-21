@@ -5,25 +5,17 @@ import { ourStore } from './Redux/myStore'
 import { BrowserRouter } from 'react-router-dom'
 import { Routing } from '../allrouting'
 import { Page } from '../src/components/Page'
-import{User} from "./components/first"
+import{User1} from "./components/first"
 
 function App() {
-  
-
-	return <>
-		{/* store-יש להגדיר ברכיב
-   את המחסן שלנו*/}
-		{/* <div>hello</div> */}
-    <Provider store={ourStore}>
+  	return <>
+		<Provider store={ourStore}>
     <BrowserRouter>
     <Page></Page>
     <Routing></Routing>
     </BrowserRouter>
-    <User></User>
+    <User1></User1>
     </Provider>
   </>
-
 }
-
-
 export default App;
