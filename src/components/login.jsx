@@ -1,13 +1,14 @@
-import {useParams } from "react-router"
+/* eslint-disable react/react-in-jsx-scope */
+import {useParams } from 'react-router';
 
 export const Login = () => {
   
-  let params = useParams()
+	let params = useParams();
  
-  return <>
-    {
-      params.component.localeCompare('login') == 0 &&<h1>login</h1>
+	return <>
+		{
+			params.component.localeCompare('login') == 0 &&<h1>login</h1>
       
-    }
-  </>
-}
+		}
+	</>;
+};
