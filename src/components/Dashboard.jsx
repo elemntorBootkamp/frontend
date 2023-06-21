@@ -51,7 +51,7 @@ export const Dashboard = () => {
                     })}
                     <Button primary size="large" onClick={() => { 
                         dispatch(set_current_websie(currentWebSite))
-                        navigate(`/edit/${currentWebSite.title}`) 
+                        navigate(`/edit`) 
                         }} label="edit" />
                     <br></br>
                     <br></br>
