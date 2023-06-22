@@ -1,25 +1,24 @@
 {
-    "settings": {
-        "react": {
-          "version": "detect"
-        }
-      },
-    "env": {
-      "browser": true,
-      "es2021": true,
-      "node":true,
-      "react":true
+  "settings": {
+      "react": {
+        "version": "detect"
+      }
     },
-    "extends": ["eslint:recommended", "plugin:react/recommended"],
-    "parserOptions": {
-      "ecmaVersion": "latest",
-      "sourceType": "module"
-    },
-    "plugins": ["react"],
-    "rules": {
-      "indent": ["error", "tab"],
-      "linebreak-style": ["error", "windows"],
-      "quotes": ["error", "single"],
-      "semi": ["error", "always"]
-    }
+  "env": {
+    "browser": true,
+    "es2021": true,      
+    "node":true 
+  },
+  "extends": ["eslint:recommended", "plugin:react/recommended"],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": ["react"],
+  "rules": {
+    "indent": ["error", "tab"],
+    "linebreak-style": ["error", "windows"],
+    "quotes": ["error", "single"],
+    "semi": ["error", "always"]
   }
+}

@@ -1,4 +1,7 @@
 .storybook-header {
+    background-color: #333;
+    box-shadow: 0px 2px 2px 1px rgba(68, 68, 69, 0.2);
+    color: #b1ee50;
     font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     padding: 15px 20px;

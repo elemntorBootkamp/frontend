@@ -10,4 +10,4 @@ RUN npm install
 # Set the env to "production"
 ENV NODE_ENV production
 EXPOSE 3000
-CMD [ "npm", "run", "dev" ]
+CMD [ "npm", "run", "dev" ] 

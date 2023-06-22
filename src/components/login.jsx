@@ -1,12 +1,14 @@
-import '../components/login.css'
-export const Login = ({component}) => {
-    return <>
-        {
-            component=="login"? <><h1>login</h1> 
-         
-            </>: <h1>logout</h1>
-           
-        }
+/* eslint-disable react/react-in-jsx-scope */
+import {useParams } from 'react-router';
 
-    </>
-}
+export const Login = () => {
+  
+	let params = useParams();
+ 
+	return <>
+		{
+			params.component.localeCompare('login') == 0 &&<h1>login</h1>
+      
+		}
+	</>;
+};
