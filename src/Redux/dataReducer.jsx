@@ -12,17 +12,17 @@ import {produce} from 'immer'
     ],
 
     users: [
-        { idUsers: 1, name: "רחלי", typeUser: [2], basket: [] },
-        { idUsers: 2, name: "יעל", typeUser: [2, 4], basket: [] },
-        { idUsers: 3, name: "שושי", typeUser: [1, 4], basket: [] },
-        { idUsers: 3, name: "שירה", typeUser: [3], basket: [] },
+        { idUsers: 1,name: "רחלי",typeUser: [2],basket: [] },
+        { idUsers: 2,name: "יעל",typeUser: [2,4],basket: [] },
+        { idUsers: 3,name: "שושי",typeUser: [1,4],basket: [] },
+        { idUsers: 3,name: "שירה",typeUser: [3],basket: [] },
     ],
      allWebsite :[
         {
             title: "aaa",
             description: "aaa",
             type_of_domain: "qwert",
-            cpu: "qwert",
+            cpu: "AMD Ryzen 7",
             memory: "123452",
             status: "qwer"
         },
@@ -30,7 +30,7 @@ import {produce} from 'immer'
             title: "bbb",
             description: "bbb",
             type_of_domain: "66666",
-            cpu: "bbb",
+            cpu: "'ARM Cortex-A73'",
             memory: "123456",
             status: "bbb"
         },
@@ -38,7 +38,7 @@ import {produce} from 'immer'
             title: "uuu",
             description: "uuu",
             type_of_domain: "uuu",
-            cpu: "uuu",
+            cpu: "'ARM Cortex-A73'",
             memory: "777777",
             status: "uuu"
         },
@@ -46,7 +46,7 @@ import {produce} from 'immer'
             title: "ccc",
             description: "ccc",
             type_of_domain: "ccc",
-            cpu: "ccc",
+            cpu: "AMD Ryzen 7",
             memory: "00000",
             status: "ccc"
         }
