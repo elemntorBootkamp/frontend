@@ -3,9 +3,7 @@ import { Button } from '../components/Button';
 import './header.css';
 
 
-export const
-
-    Header = ({ onLogin, onLogout, ondashbord, onsignup, component }) => {
+export const Header = ({ onLogin, onLogout, ondashbord, onsignup, component }) => {
         return <>
             <header>
                 <div className="storybook-header">

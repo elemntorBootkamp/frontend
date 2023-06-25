@@ -19,6 +19,7 @@ import {produce} from 'immer'
     ],
      allWebsite :[
         {
+            id: 1,
             title: "aaa",
             description: "aaa",
             type_of_domain: "qwert",
@@ -27,6 +28,7 @@ import {produce} from 'immer'
             status: "qwer"
         },
         {
+            id: 4,
             title: "bbb",
             description: "bbb",
             type_of_domain: "66666",
@@ -35,6 +37,7 @@ import {produce} from 'immer'
             status: "bbb"
         },
         {
+            id: 3,
             title: "uuu",
             description: "uuu",
             type_of_domain: "uuu",
@@ -43,6 +46,7 @@ import {produce} from 'immer'
             status: "uuu"
         },
         {
+            id: 2,
             title: "ccc",
             description: "ccc",
             type_of_domain: "ccc",

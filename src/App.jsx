@@ -5,6 +5,8 @@ import { ourStore } from './Redux/myStore'
 import { BrowserRouter } from 'react-router-dom'
 import { Routing } from '../allrouting'
 import { Page } from '../src/components/Page'
+import MyComponent from './components/jj';
+
 
 function App() {
   

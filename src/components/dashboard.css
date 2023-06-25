@@ -78,3 +78,68 @@
   .form-container .btn:hover, .open-button:hover {
     opacity: 1;
   }
+
+  #container1 {
+    width: 150px;
+    height: 150px;
+    position: relative;
+    margin: 30px;
+  }
+  
+  /* .box {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.7;
+    background: #0057e3;
+  }
+   */
+  .overlay {
+    /* z-index: 9; */
+    /* margin: 30px; */
+    background: #009938;
+    height: 0;
+  }
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    /* justify-content: space-between; */
+  }
+  
+
+  
+  .details {
+   
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    width: 100%;
+    height: 100%;
+    /* margin-top: 10px;
+    padding: 10px;
+    background-color: #eee;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.7;
+    background: #0057e3; */
+    /* transition: ease-in; */
+    /* transition: 5s; */
+  }
+  #container {
+    width: 150px;
+    height: 150px;
+    position: relative;
+    margin: 30px;
+  }
+  
