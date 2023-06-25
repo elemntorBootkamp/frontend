@@ -17,36 +17,40 @@ import {produce} from 'immer'
         { idUsers: 3,name: "שושי",typeUser: [1,4],basket: [] },
         { idUsers: 3,name: "שירה",typeUser: [3],basket: [] },
     ],
-     allWebsite :[
+    allWebsite :[
         {
+            id: 1,
             title: "aaa",
             description: "aaa",
             type_of_domain: "qwert",
-            cpu: "AMD Ryzen 7",
+            cpu: "qwert",
             memory: "123452",
             status: "qwer"
         },
         {
+            id: 4,
             title: "bbb",
             description: "bbb",
             type_of_domain: "66666",
-            cpu: "'ARM Cortex-A73'",
+            cpu: "bbb",
             memory: "123456",
             status: "bbb"
         },
         {
+            id: 3,
             title: "uuu",
             description: "uuu",
             type_of_domain: "uuu",
-            cpu: "'ARM Cortex-A73'",
+            cpu: "uuu",
             memory: "777777",
             status: "uuu"
         },
         {
+            id: 2,
             title: "ccc",
             description: "ccc",
             type_of_domain: "ccc",
-            cpu: "AMD Ryzen 7",
+            cpu: "ccc",
             memory: "00000",
             status: "ccc"
         }

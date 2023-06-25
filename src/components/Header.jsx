@@ -31,16 +31,14 @@ export const
                     </div>
                 </div>
                 {
-                    component.localeCompare('') === 0 ?
+                    component.localeCompare('') === 0?
                         <>
                             <label>On this website you can purchase and manage your website's cloud environment</label>
                         </> : <></>
                 }
-
             </header>
         </>
     };
-
 Header.propTypes = {
     user: PropTypes.shape({
         name: PropTypes.string.isRequired,

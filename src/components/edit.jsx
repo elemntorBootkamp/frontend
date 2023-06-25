@@ -6,12 +6,10 @@ import { Button } from "./Button";
 import MenuItem from '@mui/material/MenuItem';
 import { updateWebsite } from "../api/api";
 import './edit.css'
-import axios from "axios";
-
-
 
 export const Edit = () => {
-    const currencies = [
+
+    let cpu = [
         { value: 'Intel Xeon', label: 'Intel Xeon', },
         { value: 'AMD Ryzen 3', label: 'AMD Ryzen 3', },
         { value: 'AMD Ryzen 5', label: 'AMD Ryzen 5', },
@@ -22,8 +20,8 @@ export const Edit = () => {
         { value: 'Intel Core i7', label: 'Intel Core i7', },
         { value: 'Intel Core i5', label: 'Intel Core i5', },
         { value: 'Intel Core i3', label: 'Intel Core i3', },
-
     ];
+
     const website = useSelector(state => state.currentWebsit)
     const [currentWebSite, setcurrentWebSite] = React.useState(website)
 
@@ -31,6 +29,7 @@ export const Edit = () => {
         let updatedWebsite = await updateWebsite(currentWebSite);
         console.log(updatedWebsite);
       };
+
     function setTitle(t) {
         if (t.length > 50) {
             setErrorTitel({ error: true })
@@ -48,7 +47,6 @@ export const Edit = () => {
             setErrorTitel({ error: true })
             sethelperTextTitel('Can contain English letters and spirits only')
         }
-
         else {
             setErrorTitel({ error: false })
             sethelperTextTitel('')
@@ -58,7 +56,8 @@ export const Edit = () => {
         }
 
 
-    }
+    };
+
     function setDescribtion(d) {
         if (d.length > 100) {
             setErrorDescribtion({ error: true })
@@ -83,8 +82,8 @@ export const Edit = () => {
             object.description = d
             setcurrentWebSite(object)
         }
+    };
 
-    }
     function setType_of_domain(t) {
         if (t.length > 63) {
             seterrorType_of_domain({ error: true })
@@ -98,10 +97,15 @@ export const Edit = () => {
             seterrorType_of_domain({ error: true })
             sethelperTextType_of_domain('Can only contain English letters, numbers and dashes')
         }
-        else if (t[t.length - 1] === '-') {
+        else if (t[t.length - 1] === '-' || t[0]==='-') {
             seterrorType_of_domain({ error: true })
-            sethelperTextType_of_domain('A hyphen cannot appear at the end')
+            sethelperTextType_of_domain('A dash cannot appear at the end or at the beginning')
         }
+        // else if(!/^((?!-)[A-Za-z0-9-]{1, 63}(?<!-)\\.)+[A-Za-z]{2, 6}$/.test(t))
+        // {
+        //     seterrorType_of_domain({ error: true })
+        //     sethelperTextType_of_domain('לא בתבנית')
+        // }
         else {
             seterrorType_of_domain({ error: false })
             sethelperTextType_of_domain('')
@@ -109,13 +113,14 @@ export const Edit = () => {
             object.type_of_domain = t
             setcurrentWebSite(object)
         }
-
-    }
+    };
+    
     function setCpu(c) {
         let object = { ...currentWebSite }
         object.cpu = c
         setcurrentWebSite(object)
-    }
+    };
+
     function setMemory(m) {
         if (!/^\d+$/.test(m)) {
             seterroMemory({ error: true })
@@ -132,8 +137,7 @@ export const Edit = () => {
             object.memory = m
             setcurrentWebSite(object)
         }
-    }
-
+    };
 
     function postNewWebsiteToTheServer() {
         if (errorDescribtion.error === true ||
@@ -153,6 +157,7 @@ export const Edit = () => {
     const [helperTextDescribtion, sethelperTextDescribtion] = React.useState()
     const [helperTextType_of_domain, sethelperTextType_of_domain] = React.useState()
     const [helperTextMemory, sethelperTextMemory] = React.useState()
+    
     return <>
         <Box
             component="form"
@@ -174,7 +179,9 @@ export const Edit = () => {
                     variant="standard"
                     onChange={(e) => setTitle(e.target.value)}
                 />
+
                 <br></br>
+
                 <TextField
                     {...errorDescribtion}
                     id="Standard-error"
@@ -184,6 +191,7 @@ export const Edit = () => {
                     onChange={(e) => setDescribtion(e.target.value)}
                     helperText={helperTextDescribtion}
                 />
+
                 <br></br>
 
                 <TextField
@@ -195,22 +203,26 @@ export const Edit = () => {
                     onChange={(e) => setType_of_domain(e.target.value)}
                     helperText={helperTextType_of_domain}
                 />
+
                 <br></br>
 
                 <TextField
                     id="standard-select-currency"
                     select
                     label="Cpu"
-                    defaultValue={currentWebSite.cpu}
+                    defaultValue=''
                     variant="standard"
+                    onChange={(e)=>setCpu(e.target.value)}
                 >
-                    {currencies.map((option) => (
+                    {cpu.map((option) => (
                         <MenuItem key={option.value} value={option.value}>
-                            {option.label}
+                        {option.label}    
                         </MenuItem>
                     ))}
                 </TextField>
+
                 <br></br>
+
                 <TextField
                     {...errorMemory}
                     id="standard-error"
@@ -220,20 +232,28 @@ export const Edit = () => {
                     onChange={(e) => setMemory(e.target.value)}
                     helperText={helperTextMemory}
                 />
+
                 <br></br>
                 <br></br>
                 <br></br>
-                <Button primary label="ok" onClick={async () => {
+
+                <Button primary label="ok" onClick={ async() => {
+                    
                     let update = postNewWebsiteToTheServer()
                     if (!update)
                         alert("The form is incorrect, it is not possible to save changes");//לא תקין
-                    else {
-                    handleUpdate()
-                    }
-                }}></Button>
+                    else 
+                        handleUpdate()         
+                }}>
+                </Button>
+
                 <br></br>
                 <br></br>
+
             </div>
+
         </Box>
+
     </>
 }
+

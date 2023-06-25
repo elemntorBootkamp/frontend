@@ -18,7 +18,7 @@ export const Button = ({ primary, backgroundColor, size, label, ...props }) => {
 
 Button.propTypes = {
   primary: PropTypes.bool,
-  size: PropTypes.oneOf(['small', 'medium', 'large','xl']),
+  size: PropTypes.oneOf(['small', 'medium', 'large']),
   label: PropTypes.string.isRequired,
   onClick: PropTypes.func,
 };
