@@ -12,6 +12,8 @@ const Nav = () => {
 	const [token, setToken] = useState(null);
 	debugger;
 	useEffect(() => {
+		console.log('wow!!!!!😉');
+		
 		if (initialized) {
 			setAuthenticated(keycloak.authenticated);
 			keycloak.getToken()
@@ -31,13 +33,18 @@ const Nav = () => {
 	debugger;
 	const handleLogin = () => {
 		keycloak.login();
+		console.log(keycloak.authenticated());
+	};
+	const handleSignUp = () => {
+		keycloak.register();
 	};
 	debugger;
 	return (
 		<div>
 			<button onClick={handleLogout}>Logout</button>
 
-			<button onClick={handleLogin}>Login</button>
+			<button onClick={handleLogin}>Log in</button>
+			<button onClick={handleSignUp}>Sign up</button>
 		</div>
 	// <div>
 	// //   {initialized && authenticated ? (
