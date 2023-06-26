@@ -1,4 +1,4 @@
-import axios from "axios"
+import axios from 'axios';
 
 export const getAll = async () => {
     const port = import.meta.env.VITE_PORT || 8090

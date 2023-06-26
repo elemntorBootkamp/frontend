@@ -101,11 +101,6 @@ export const Edit = () => {
             seterrorType_of_domain({ error: true })
             sethelperTextType_of_domain('A dash cannot appear at the end or at the beginning')
         }
-        // else if(!/^((?!-)[A-Za-z0-9-]{1, 63}(?<!-)\\.)+[A-Za-z]{2, 6}$/.test(t))
-        // {
-        //     seterrorType_of_domain({ error: true })
-        //     sethelperTextType_of_domain('לא בתבנית')
-        // }
         else {
             seterrorType_of_domain({ error: false })
             sethelperTextType_of_domain('')

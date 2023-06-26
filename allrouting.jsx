@@ -8,13 +8,12 @@ import { Edit } from "./src/components/edit";
 
 
 export const Routing=()=>{
-return<>
-<Routes>
-    <Route path="mainpage" element={<Page/>}></Route>
-    <Route path="login/:component" element={<Login/>} />
-    <Route path="signup" element={<Signup/>}/>
-    <Route path="dashboard" element={<Dashboard/>}/>
-    <Route path="edit" element={<Edit/>}/>
-</Routes>
-</>
-}
+	return<>
+		<Routes>
+			<Route path="mainpage" element={<Page/>}></Route>
+			<Route path="login/:component" element={<Login/>} />
+			<Route path="signup" element={<Signup/>}/>
+			<Route path="dashboard" element={<Dashboard/>}/>
+		</Routes>
+	</>;
+};
