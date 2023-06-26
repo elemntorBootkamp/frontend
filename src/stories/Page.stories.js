@@ -2,11 +2,11 @@ import { within, userEvent } from '@storybook/testing-library';
 import { Page } from '../components/Page';
 
 export default {
-  title: 'Page',
-  component: Page,
-  parameters: {
-    layout: 'fullscreen',
-  },
+	title: 'Page',
+	component: Page,
+	parameters: {
+		layout: 'fullscreen',
+	},
 };
 
 export const LoggedOut = {};
