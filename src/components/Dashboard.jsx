@@ -60,7 +60,6 @@ export const Dashboard = () => {
               />
               <br></br>
               <br></br>
-              <Button primary size="large" label="close" />
               <Button
                 primary
                 size="large"
