@@ -39,43 +39,27 @@ export const Dashboard = () => {
           </div>
           {website.showDetails && (
             <div className="details">
-              <h1>{website.title}</h1>
+                
+                <a className="closebtn"  onClick={() => {
+                  handleBoxClick(website.id);
+                }}>&times;</a>
               {Object.keys(website).map((key, index) => {
                 return (
                   <div key={index}>
-                    <h2>
-                      {key}: {website[key]}
-                    </h2>
-                    <hr />
+                    <p>
+                      {key}:{website[key]}
+                    </p>
                   </div>
                 );
               })}
               <Button
-                primary
-                size="large"
+              primary
+                size="small"
                 onClick={() => {
                   navigate("/edit");
                 }}
                 label="edit"
               />
-              <br></br>
-              <br></br>
-              <Button
-                primary
-                size="large"
-                onClick={() => {
-                  dispatch(set_current_websie(website));
-                  navigate(`/edit`);
-                }}
-                label="edit"
-              />
-              <br></br>
-              <Button
-                label="close"
-                onClick={() => {
-                  handleBoxClick(website.id);
-                }}
-              ></Button>
             </div>
           )}
         </div>
