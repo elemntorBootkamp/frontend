@@ -6,14 +6,14 @@ import { Button } from "./Button";
 import MenuItem from '@mui/material/MenuItem';
 import { updateWebsite } from "../api/api";
 import {validateDescribtion,validateTitle,validateType_of_domain,validateMemory} from "./validation";
-import './edit.css'
 import axios from "axios";
-
+import './edit.css'
 
 export const Edit = () => {
       React.useEffect(() => {
         async function fetchData() {
-            axios('http://localhost:8090/website/validcpu')
+            const SERVERURL = import.meta.env.VITE_SERVER_URL;
+            axios(`${SERVERURL}/website/validcpu`)
             .then((res)=>{ setvalidcpu(res.data)})
             .catch((err)=>{console.log(err);})
         }
