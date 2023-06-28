@@ -7,10 +7,10 @@ import { set_current_websie } from "../redux/dataActions";
 import "./dashboard.css";
 
 export const Dashboard = () => {
-  let navigate = useNavigate();
-  let dispatch = useDispatch();
-  const allWebsites = useSelector((state) => state.allWebsite);
-  const [allWebsite, setallWebsites] = useState([...allWebsites]);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const allwebsitefromstore = useSelector((state) => state.allWebsite);
+  const [allWebsites, setallWebsites] = useState([...allwebsitefromstore]);
 
   const handleBoxClick = (id) => {
     setallWebsites((web) =>
@@ -23,7 +23,7 @@ export const Dashboard = () => {
   };
   return (
     <>
-      {allWebsite.map((website) => (
+      {allWebsites.map((website) => (
         <div key={website.title} id="container" className="div_website">
           <div >
             <h1>{website.title}</h1>
@@ -56,6 +56,7 @@ export const Dashboard = () => {
               primary
                 size="small"
                 onClick={() => {
+                  dispatch(set_current_websie(website))
                   navigate("/edit");
                 }}
                 label="edit"
