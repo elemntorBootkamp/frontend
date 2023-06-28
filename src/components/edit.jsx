@@ -5,24 +5,21 @@ import TextField from '@mui/material/TextField';
 import { Button } from "./Button";
 import MenuItem from '@mui/material/MenuItem';
 import { updateWebsite } from "../api/api";
-import './edit.css'
 import {validateDescribtion,validateTitle,validateType_of_domain,validateMemory} from "./validation";
+import './edit.css'
+import axios from "axios";
+
 
 export const Edit = () => {
-
-    let cpu = [
-        { value: 'Intel Xeon', label: 'Intel Xeon', },
-        { value: 'AMD Ryzen 3', label: 'AMD Ryzen 3', },
-        { value: 'AMD Ryzen 5', label: 'AMD Ryzen 5', },
-        { value: 'AMD Ryzen 7', label: 'AMD Ryzen 7', },
-        { value: 'ARM Cortex-A53', label: 'ARM Cortex-A53', },
-        { value: 'ARM Cortex-A72', label: 'ARM Cortex-A72', },
-        { value: 'ARM Cortex-A73', label: 'ARM Cortex-A73', },
-        { value: 'Intel Core i7', label: 'Intel Core i7', },
-        { value: 'Intel Core i5', label: 'Intel Core i5', },
-        { value: 'Intel Core i3', label: 'Intel Core i3', },
-    ];
-
+      React.useEffect(() => {
+        async function fetchData() {
+            axios('http://localhost:8090/website/validcpu')
+            .then((res)=>{ setvalidcpu(res.data)})
+            .catch((err)=>{console.log(err);})
+        }
+        fetchData();  
+      }, []);
+    const [validcpu,setvalidcpu]=React.useState([])
     const website = useSelector(state => state.currentWebsit)
     const [currentWebSite, setcurrentWebSite] = React.useState(website)
 
@@ -182,7 +179,7 @@ export const Edit = () => {
                     variant="standard"
                     onChange={(e)=>setCpu(e.target.value)}
                 >
-                    {cpu.map((option) => (
+                    {validcpu.map((option) => (
                         <MenuItem key={option.value} value={option.value}>
                         {option.label}    
                         </MenuItem>
