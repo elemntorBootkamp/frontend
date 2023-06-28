@@ -32,11 +32,9 @@ export const Edit = () => {
     }, []);
 
     const handleUpdate = async () => {
-        if(errorDescribtion.error ||
-            errorMemory.error ||
-            errorTitle.error ||
-            errorTypeOfDomain.error)
-          alert("The form is incorrect, it is not possible to save changes");
+        if(errorDescribtion.error ||errorMemory.error||errorTitle.error ||errorTypeOfDomain.error){
+            alert("The form is incorrect, it is not possible to save changes");
+        }
         else {
             updateWebsite(currentWebSite);
         }
@@ -47,7 +45,7 @@ export const Edit = () => {
         if (!helperText) {
             setErrorTitel({ error: false })
             sethelperTextTitel('')
-            const titleObject = { ...currentWebSite }
+            const titleObject = { ...currentWebSite}
             titleObject.title = title
             setcurrentWebSite(titleObject)
         } else {
@@ -114,7 +112,7 @@ export const Edit = () => {
             autoComplete="off"
             id="box"
         >
-            <h4>Edit</h4>
+            <h4 id="title">Edit</h4>
             <div>
                 <TextField
                     {...errorTitle}
@@ -140,7 +138,7 @@ export const Edit = () => {
                     {...errorTypeOfDomain}
                     id="standard-error"
                     label="Type of domain"
-                    defaultValue={currentWebSite.TypeOfDomain}
+                    defaultValue={currentWebSite.typeOfDomain}
                     variant="standard"
                     onChange={(e) => setTypeOfDomain(e.target.value)}
                     helperText={helperTextTypeOfDomain}
@@ -171,7 +169,9 @@ export const Edit = () => {
                     helperText={helperTextMemory}
                 />
                 <br></br>
-                <Button primary label="ok" onClick={async () => {handleUpdate();}}></Button>
+                <div id='buttonform'>
+                    <Button primary label="ok" onClick={async () =>{handleUpdate();}}></Button>
+                </div>
                 <br></br>
             </div>
         </Box>
