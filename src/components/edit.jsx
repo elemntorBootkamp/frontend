@@ -6,6 +6,7 @@ import { Button } from "./Button";
 import MenuItem from '@mui/material/MenuItem';
 import { updateWebsite } from "../api/api";
 import './edit.css'
+import {validateDescribtion,validateTitle,validateType_of_domain,validateMemory} from "./validation";
 
 export const Edit = () => {
 
@@ -31,83 +32,56 @@ export const Edit = () => {
       };
 
     function setTitle(t) {
-        if (t.length > 50) {
-            setErrorTitel({ error: true })
-            sethelperTextTitel('Maximum length 50 characters')
-        }
-        else if (t.length === 0) {
-            setErrorTitel({ error: true })
-            sethelperTextTitel('required')
-        }
-        else if (t.length < 3) {
-            setErrorTitel({ error: true })
-            sethelperTextTitel('Minimum length 3 characters')
-        }
-        else if (!/^[a-zA-Z\s]+$/.test(t)) {
-            setErrorTitel({ error: true })
-            sethelperTextTitel('Can contain English letters and spirits only')
-        }
-        else {
+        let helperText=validateTitle(t)
+        if(helperText==='')
+        {
             setErrorTitel({ error: false })
             sethelperTextTitel('')
             let object = { ...currentWebSite }
             object.title = t
             setcurrentWebSite(object)
         }
-
-
+        else
+        {
+            setErrorTitel({error:true})
+            sethelperTextTitel(helperText)
+        }
     };
 
     function setDescribtion(d) {
-        if (d.length > 100) {
-            setErrorDescribtion({ error: true })
-            sethelperTextDescribtion('Maximum length 100 characters')
-        }
-        else if (d.length === 0) {
-            setErrorDescribtion({ error: true })
-            sethelperTextDescribtion('required')
-        }
-        else if (d.length < 10) {
-            setErrorDescribtion({ error: true })
-            sethelperTextDescribtion('Minimum length 10 characters')
-        }
-        else if (!/^[a-zA-Z\s]+$/.test(d)) {
-            setErrorDescribtion({ error: true })
-            sethelperTextDescribtion('Can contain English letters and spirits only')
-        }
-        else {
+        let helperText=validateDescribtion(d)
+        if(helperText==='')
+        {
             setErrorDescribtion({ error: false })
             sethelperTextDescribtion('')
             let object = { ...currentWebSite }
             object.description = d
             setcurrentWebSite(object)
         }
+        else
+        {
+            setErrorDescribtion({error:true})
+            sethelperTextDescribtion(helperText)
+        }
     };
 
     function setType_of_domain(t) {
-        if (t.length > 63) {
-            seterrorType_of_domain({ error: true })
-            sethelperTextType_of_domain('Maximum length 63 characters')
-        }
-        else if (t.length == 0) {
-            seterrorType_of_domain({ error: true })
-            sethelperTextType_of_domain('required')
-        }
-        else if (!/^[a-zA-Z0-9-]+$/.test(t)) {
-            seterrorType_of_domain({ error: true })
-            sethelperTextType_of_domain('Can only contain English letters, numbers and dashes')
-        }
-        else if (t[t.length - 1] === '-' || t[0]==='-') {
-            seterrorType_of_domain({ error: true })
-            sethelperTextType_of_domain('A dash cannot appear at the end or at the beginning')
-        }
-        else {
+        let helperText=validateType_of_domain(t)
+       
+        if(helperText==='')
+        {
             seterrorType_of_domain({ error: false })
             sethelperTextType_of_domain('')
             let object = { ...currentWebSite }
             object.type_of_domain = t
             setcurrentWebSite(object)
         }
+        else
+        {
+            seterrorType_of_domain({error:true})
+            sethelperTextType_of_domain(helperText)
+        }
+        
     };
     
     function setCpu(c) {
@@ -117,20 +91,19 @@ export const Edit = () => {
     };
 
     function setMemory(m) {
-        if (!/^\d+$/.test(m)) {
-            seterroMemory({ error: true })
-            sethelperTextMemory('Can only contain numbers')
-        }
-        else if (parseInt(m) < 10) {
-            seterroMemory({ error: true })
-            sethelperTextMemory('Number must be bigger than 10')
-        }
-        else {
+        let helperText=validateMemory(m)
+        if(helperText==='')
+        {
             seterroMemory({ error: false })
             sethelperTextMemory('')
             let object = { ...currentWebSite }
             object.memory = m
             setcurrentWebSite(object)
+        }
+        else
+        {
+            seterroMemory({error:true})
+            sethelperTextMemory(helperText)
         }
     };
 
@@ -236,7 +209,7 @@ export const Edit = () => {
                     
                     let update = postNewWebsiteToTheServer()
                     if (!update)
-                        alert("The form is incorrect, it is not possible to save changes");//לא תקין
+                        alert("The form is incorrect, it is not possible to save changes"); 
                     else 
                         handleUpdate()         
                 }}>
