@@ -4,13 +4,22 @@ import { useState } from "react";
 import { Outlet, useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { set_current_websie } from "../redux/dataActions";
+import { getAllWebsites } from "../api/api";
+import { useEffect } from "react";
 import "./dashboard.css";
 
 export const Dashboard = () => {
+  
+  useEffect(() => {
+    async function fetchData() {
+        const data=await getAllWebsites();
+        setallWebsites(data);
+    }
+    fetchData();  
+  },[]);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const allwebsitefromstore = useSelector((state) => state.allWebsite);
-  const [allWebsites, setallWebsites] = useState([...allwebsitefromstore]);
+  const [allWebsites, setallWebsites] = useState([]);
 
   const handleBoxClick = (id) => {
     setallWebsites((web) =>

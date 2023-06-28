@@ -1,128 +1,109 @@
-import { useSelector } from "react-redux"
 import * as React from 'react';
+import { useSelector } from "react-redux"
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { Button } from "./Button";
 import MenuItem from '@mui/material/MenuItem';
-import { updateWebsite } from "../api/api";
-import {validateDescribtion,validateTitle,validateType_of_domain,validateMemory} from "./validation";
-import axios from "axios";
+import { getValidCpu, updateWebsite } from "../api/api";
+import { validateDescribtion, validateTitle, validateTypeOfDomain, validateMemory } from "./validation";
+import { useEffect } from "react";
 import './edit.css'
 
 export const Edit = () => {
-      React.useEffect(() => {
-        async function fetchData() {
-            const SERVERURL = import.meta.env.VITE_SERVER_URL;
-            axios(`${SERVERURL}/website/validcpu`)
-            .then((res)=>{ setvalidcpu(res.data)})
-            .catch((err)=>{console.log(err);})
-        }
-        fetchData();  
-      }, []);
-    const [validcpu,setvalidcpu]=React.useState([])
+    
+    const [errorTitle, setErrorTitel] = React.useState({})
+    const [errorDescribtion, setErrorDescribtion] = React.useState({})
+    const [errorTypeOfDomain,seterrorTypeOfDomain] = React.useState({})
+    const [errorMemory, seterroMemory] = React.useState({})
+    const [helperTextTitle, sethelperTextTitel] = React.useState()
+    const [helperTextDescribtion, sethelperTextDescribtion] = React.useState()
+    const [helperTextTypeOfDomain, sethelperTextTypeOfDomain] = React.useState()
+    const [helperTextMemory, sethelperTextMemory] = React.useState()
+    const [validcpu, setvalidcpu] = React.useState([])
     const website = useSelector(state => state.currentWebsit)
     const [currentWebSite, setcurrentWebSite] = React.useState(website)
+   
+    useEffect(() => {
+        async function fetchData() {
+            let data = await getValidCpu();
+            setvalidcpu(data);
+        }
+        fetchData();
+    }, []);
 
     const handleUpdate = async () => {
-        let updatedWebsite = await updateWebsite(currentWebSite);
-        console.log(updatedWebsite);
-      };
+        if(errorDescribtion.error ||
+            errorMemory.error ||
+            errorTitle.error ||
+            errorTypeOfDomain.error)
+          alert("The form is incorrect, it is not possible to save changes");
+        else {
+            updateWebsite(currentWebSite);
+        }
+    };
 
-    function setTitle(t) {
-        let helperText=validateTitle(t)
-        if(helperText==='')
-        {
+    const setTitle = (title) => {
+        let helperText = validateTitle(title)
+        if (!helperText) {
             setErrorTitel({ error: false })
             sethelperTextTitel('')
-            let object = { ...currentWebSite }
-            object.title = t
-            setcurrentWebSite(object)
-        }
-        else
-        {
-            setErrorTitel({error:true})
+            const titleObject = { ...currentWebSite }
+            titleObject.title = title
+            setcurrentWebSite(titleObject)
+        } else {
+            setErrorTitel({ error: true })
             sethelperTextTitel(helperText)
         }
     };
 
-    function setDescribtion(d) {
-        let helperText=validateDescribtion(d)
-        if(helperText==='')
-        {
+    const setDescribtion = (describtion) => {
+        let helperText = validateDescribtion(describtion)
+        if (!helperText) {
             setErrorDescribtion({ error: false })
             sethelperTextDescribtion('')
-            let object = { ...currentWebSite }
-            object.description = d
-            setcurrentWebSite(object)
-        }
-        else
-        {
-            setErrorDescribtion({error:true})
+            const describtionObject = { ...currentWebSite }
+            describtionObject.description = describtion
+            setcurrentWebSite(describtionObject)
+        } else {
+            setErrorDescribtion({ error: true })
             sethelperTextDescribtion(helperText)
         }
     };
 
-    function setType_of_domain(t) {
-        let helperText=validateType_of_domain(t)
-       
-        if(helperText==='')
-        {
-            seterrorType_of_domain({ error: false })
-            sethelperTextType_of_domain('')
-            let object = { ...currentWebSite }
-            object.type_of_domain = t
-            setcurrentWebSite(object)
+    const setTypeOfDomain = (typeOfDomain) => {
+        let helperText = validateTypeOfDomain(typeOfDomain)
+        if (!helperText) {
+            seterrorTypeOfDomain({ error: false })
+            sethelperTextTypeOfDomain('')
+            const typeOfDomainObject = { ...currentWebSite }
+            typeOfDomainObject.TypeOfDomain = typeOfDomain
+            setcurrentWebSite(typeOfDomainObject)
+        } else {
+            seterrorTypeOfDomain({ error: true })
+            sethelperTextTypeOfDomain(helperText)
         }
-        else
-        {
-            seterrorType_of_domain({error:true})
-            sethelperTextType_of_domain(helperText)
-        }
-        
-    };
-    
-    function setCpu(c) {
-        let object = { ...currentWebSite }
-        object.cpu = c
-        setcurrentWebSite(object)
+
     };
 
-    function setMemory(m) {
-        let helperText=validateMemory(m)
-        if(helperText==='')
-        {
+    const setCpu = (cpu) => {
+        const cpuObject = { ...currentWebSite }
+        cpuObject.cpu = cpu
+        setcurrentWebSite(cpuObject)
+    };
+
+    const setMemory = (memory) => {
+        let helperText = validateMemory(memory)
+        if (!helperText) {
             seterroMemory({ error: false })
             sethelperTextMemory('')
-            let object = { ...currentWebSite }
-            object.memory = m
-            setcurrentWebSite(object)
-        }
-        else
-        {
-            seterroMemory({error:true})
+            const memoryObject = { ...currentWebSite }
+            memoryObject.memory = memory
+            setcurrentWebSite(memoryObject)
+        } else {
+            seterroMemory({ error: true })
             sethelperTextMemory(helperText)
         }
     };
-
-    function postNewWebsiteToTheServer() {
-        if (errorDescribtion.error === true ||
-            errorMemory.error === true ||
-            errorTitle.error === true ||
-            errorType_of_domain.error === true)
-            return false
-        return true
-    }
-
-    const [errorTitle, setErrorTitel] = React.useState({})
-    const [errorDescribtion, setErrorDescribtion] = React.useState({})
-    const [errorType_of_domain, seterrorType_of_domain] = React.useState({})
-    const [errorMemory, seterroMemory] = React.useState({})
-
-    const [helperTextTitle, sethelperTextTitel] = React.useState()
-    const [helperTextDescribtion, sethelperTextDescribtion] = React.useState()
-    const [helperTextType_of_domain, sethelperTextType_of_domain] = React.useState()
-    const [helperTextMemory, sethelperTextMemory] = React.useState()
-    
     return <>
         <Box
             component="form"
@@ -133,7 +114,7 @@ export const Edit = () => {
             autoComplete="off"
             id="box"
         >
-            <h1>Edit</h1>
+            <h4>Edit</h4>
             <div>
                 <TextField
                     {...errorTitle}
@@ -144,9 +125,7 @@ export const Edit = () => {
                     variant="standard"
                     onChange={(e) => setTitle(e.target.value)}
                 />
-
                 <br></br>
-
                 <TextField
                     {...errorDescribtion}
                     id="Standard-error"
@@ -156,38 +135,32 @@ export const Edit = () => {
                     onChange={(e) => setDescribtion(e.target.value)}
                     helperText={helperTextDescribtion}
                 />
-
                 <br></br>
-
                 <TextField
-                    {...errorType_of_domain}
+                    {...errorTypeOfDomain}
                     id="standard-error"
                     label="Type of domain"
-                    defaultValue={currentWebSite.type_of_domain}
+                    defaultValue={currentWebSite.TypeOfDomain}
                     variant="standard"
-                    onChange={(e) => setType_of_domain(e.target.value)}
-                    helperText={helperTextType_of_domain}
+                    onChange={(e) => setTypeOfDomain(e.target.value)}
+                    helperText={helperTextTypeOfDomain}
                 />
-
                 <br></br>
-
                 <TextField
                     id="standard-select-currency"
                     select
                     label="Cpu"
                     defaultValue=''
                     variant="standard"
-                    onChange={(e)=>setCpu(e.target.value)}
+                    onChange={(e) => setCpu(e.target.value)}
                 >
                     {validcpu.map((option) => (
                         <MenuItem key={option.value} value={option.value}>
-                        {option.label}    
+                            {option.label}
                         </MenuItem>
                     ))}
                 </TextField>
-
                 <br></br>
-
                 <TextField
                     {...errorMemory}
                     id="standard-error"
@@ -197,28 +170,11 @@ export const Edit = () => {
                     onChange={(e) => setMemory(e.target.value)}
                     helperText={helperTextMemory}
                 />
-
                 <br></br>
+                <Button primary label="ok" onClick={async () => {handleUpdate();}}></Button>
                 <br></br>
-                <br></br>
-
-                <Button primary label="ok" onClick={ async() => {
-                    
-                    let update = postNewWebsiteToTheServer()
-                    if (!update)
-                        alert("The form is incorrect, it is not possible to save changes"); 
-                    else 
-                        handleUpdate()         
-                }}>
-                </Button>
-
-                <br></br>
-                <br></br>
-
             </div>
-
         </Box>
-
     </>
 }
 

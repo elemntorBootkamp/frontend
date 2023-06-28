@@ -2,12 +2,33 @@ import axios from 'axios';
 
 export const updateWebsite = async (website) => {
     const SERVERURL = import.meta.env.VITE_SERVER_URL;
-    await axios.put(`${SERVERURL}/website/update`, website)
-        .then((res) => {
-            return res
-        })
-        .catch((err) => {
-            console.log(err);
-        })
+    try {
+        const { data } = await axios.put(`${SERVERURL}/website/update`, website)
+        return data;
+    }
+    catch (err) {
+        console.log(err);
+    }
 }
 
+export const getValidCpu = async () => {
+    const SERVERURL = import.meta.env.VITE_SERVER_URL;
+    try{
+        const { data} = await axios.get(`${SERVERURL}/website/validcpu`)
+    return data;
+    } 
+    catch(err){
+        console.log(err);
+    }
+  };
+
+export const getAllWebsites = async () => {
+    const SERVERURL = import.meta.env.VITE_SERVER_URL;
+    try{
+        const { data} = await axios(`${SERVERURL}/website/`);
+        return data;
+    }
+    catch(err){
+        console.log(err);
+    }
+  };
