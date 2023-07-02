@@ -22,16 +22,16 @@ export const DisplayWebsites = () =>{
 	return <>
 		{
 			(data !== undefined && data.length > 0) ? (
-				data.map((w) => <>
-					<Card title={w.name}
-						description={w.description}
-						img={w.websiteLogo}
+				data.map((website) => <>
+					<Card title={website.name}
+						description={wwebsite.description}
+						img={website.websiteLogo}
 						deatail1Title='Size: '
 						deatail2Title='Manager: '
 						deatail3Title='Date Published'
-						deatail1={w.size}
-						deatail2={w.manager}
-						deatail3={w.datePublished}
+						deatail1={website.size}
+						deatail2={website.manager}
+						deatail3={website.datePublished}
 					></Card>
 				</>)
 			) : (
