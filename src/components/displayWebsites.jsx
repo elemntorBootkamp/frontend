@@ -24,7 +24,7 @@ export const DisplayWebsites = () =>{
 			(data !== undefined && data.length > 0) ? (
 				data.map((website) => <>
 					<Card title={website.name}
-						description={wwebsite.description}
+						description={website.description}
 						img={website.websiteLogo}
 						deatail1Title='Size: '
 						deatail2Title='Manager: '
