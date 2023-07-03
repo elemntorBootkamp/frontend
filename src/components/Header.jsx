@@ -1,8 +1,5 @@
-/* eslint-disable react/no-unescaped-entities */
-/* eslint-disable react/react-in-jsx-scope */
-/* eslint-disable react/prop-types */
 import PropTypes from 'prop-types';
-import { Button } from '../components/Button';
+import { Button } from './button';
 import './header.css';
 
 

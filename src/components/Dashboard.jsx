@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "./Button";
+import { Button } from "./button";
 import { useState } from "react";
 import { Outlet, useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";

@@ -1,41 +1,39 @@
-import * as React from 'react';
 import { useSelector } from "react-redux"
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import { Button } from "./Button";
+import { Button } from "./button";
 import MenuItem from '@mui/material/MenuItem';
 import { getValidCpu, updateWebsite } from "../api/api";
 import { validateDescribtion, validateTitle, validateTypeOfDomain, validateMemory } from "./validation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import './edit.css'
 
 export const Edit = () => {
     
-    const [errorTitle, setErrorTitel] = React.useState({})
-    const [errorDescribtion, setErrorDescribtion] = React.useState({})
-    const [errorTypeOfDomain,seterrorTypeOfDomain] = React.useState({})
-    const [errorMemory, seterroMemory] = React.useState({})
-    const [helperTextTitle, sethelperTextTitel] = React.useState()
-    const [helperTextDescribtion, sethelperTextDescribtion] = React.useState()
-    const [helperTextTypeOfDomain, sethelperTextTypeOfDomain] = React.useState()
-    const [helperTextMemory, sethelperTextMemory] = React.useState()
-    const [validcpu, setvalidcpu] = React.useState([])
+    const [errorTitle, setErrorTitel] = useState({})
+    const [errorDescribtion, setErrorDescribtion] = useState({})
+    const [errorTypeOfDomain,setErrorTypeOfDomain] =useState({})
+    const [errorMemory, setErroMemory] =useState({})
+    const [helperTextTitle, setHelperTextTitel] =useState()
+    const [helperTextDescribtion, setHelperTextDescribtion] =useState()
+    const [helperTextTypeOfDomain, setHelperTextTypeOfDomain] =useState()
+    const [helperTextMemory, setHelperTextMemory] =useState()
+    const [validcpu, setvalidcpu] = useState([])
     const website = useSelector(state => state.currentWebsit)
-    const [currentWebSite, setcurrentWebSite] = React.useState(website)
-   
+    const [currentWebSite, setCurrentWebSite] = useState(website)
+
     useEffect(() => {
         async function fetchData() {
-            let data = await getValidCpu();
+            const data = await getValidCpu();
             setvalidcpu(data);
         }
         fetchData();
     }, []);
 
     const handleUpdate = async () => {
-        if(errorDescribtion.error ||errorMemory.error||errorTitle.error ||errorTypeOfDomain.error){
+        if(errorDescribtion.error||errorMemory.error||errorTitle.error ||errorTypeOfDomain.error){
             alert("The form is incorrect, it is not possible to save changes");
-        }
-        else {
+        }else {
             updateWebsite(currentWebSite);
         }
     };
@@ -44,13 +42,13 @@ export const Edit = () => {
         let helperText = validateTitle(title)
         if (!helperText) {
             setErrorTitel({ error: false })
-            sethelperTextTitel('')
+            setHelperTextTitel('')
             const titleObject = { ...currentWebSite}
             titleObject.title = title
-            setcurrentWebSite(titleObject)
+            setCurrentWebSite(titleObject)
         } else {
             setErrorTitel({ error: true })
-            sethelperTextTitel(helperText)
+            setHelperTextTitel(helperText)
         }
     };
 
@@ -58,27 +56,27 @@ export const Edit = () => {
         let helperText = validateDescribtion(describtion)
         if (!helperText) {
             setErrorDescribtion({ error: false })
-            sethelperTextDescribtion('')
+            setHelperTextDescribtion('')
             const describtionObject = { ...currentWebSite }
             describtionObject.description = describtion
-            setcurrentWebSite(describtionObject)
+            setCurrentWebSite(describtionObject)
         } else {
             setErrorDescribtion({ error: true })
-            sethelperTextDescribtion(helperText)
+            setHelperTextDescribtion(helperText)
         }
     };
 
     const setTypeOfDomain = (typeOfDomain) => {
         let helperText = validateTypeOfDomain(typeOfDomain)
         if (!helperText) {
-            seterrorTypeOfDomain({ error: false })
-            sethelperTextTypeOfDomain('')
+            setErrorTypeOfDomain({ error: false })
+            setHelperTextTypeOfDomain('')
             const typeOfDomainObject = { ...currentWebSite }
             typeOfDomainObject.TypeOfDomain = typeOfDomain
-            setcurrentWebSite(typeOfDomainObject)
+            setCurrentWebSite(typeOfDomainObject)
         } else {
-            seterrorTypeOfDomain({ error: true })
-            sethelperTextTypeOfDomain(helperText)
+            setErrorTypeOfDomain({ error: true })
+            setHelperTextTypeOfDomain(helperText)
         }
 
     };
@@ -86,20 +84,20 @@ export const Edit = () => {
     const setCpu = (cpu) => {
         const cpuObject = { ...currentWebSite }
         cpuObject.cpu = cpu
-        setcurrentWebSite(cpuObject)
+        setCurrentWebSite(cpuObject)
     };
 
     const setMemory = (memory) => {
         let helperText = validateMemory(memory)
         if (!helperText) {
-            seterroMemory({ error: false })
-            sethelperTextMemory('')
+            setErroMemory({ error: false })
+            setHelperTextMemory('')
             const memoryObject = { ...currentWebSite }
             memoryObject.memory = memory
-            setcurrentWebSite(memoryObject)
+            setCurrentWebSite(memoryObject)
         } else {
-            seterroMemory({ error: true })
-            sethelperTextMemory(helperText)
+            setErroMemory({ error: true })
+            setHelperTextMemory(helperText)
         }
     };
     return <>
@@ -118,10 +116,10 @@ export const Edit = () => {
                     {...errorTitle}
                     id="standard-error"
                     label="Title"
-                    helperText={helperTextTitle}
                     defaultValue={currentWebSite.title}
                     variant="standard"
                     onChange={(e) => setTitle(e.target.value)}
+                    helperText={helperTextTitle}
                 />
                 <br></br>
                 <TextField
@@ -170,9 +168,8 @@ export const Edit = () => {
                 />
                 <br></br>
                 <div id='buttonform'>
-                    <Button primary label="ok" onClick={async () =>{handleUpdate();}}></Button>
+                    <Button primary label="ok" onClick={async()=>{handleUpdate();}}></Button>
                 </div>
-                <br></br>
             </div>
         </Box>
     </>

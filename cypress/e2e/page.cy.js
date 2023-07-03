@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import 'cypress-react-selector';
 
 describe('Page component', () => {
@@ -44,3 +43,4 @@ describe('Page component', () => {
 		cy.url().should('contain', '/dashboard');
 	});
 });
+//npx cypress open
