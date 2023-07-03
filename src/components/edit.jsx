@@ -4,18 +4,18 @@ import TextField from '@mui/material/TextField';
 import { Button } from "./button";
 import MenuItem from '@mui/material/MenuItem';
 import { getValidCpu, updateWebsite } from "../api/api";
-import { validateDescribtion, validateTitle, validateTypeOfDomain, validateMemory } from "./validation";
+import { validateDescription, validateTitle, validateTypeOfDomain, validateMemory } from "./validation";
 import { useEffect, useState } from "react";
 import './edit.css'
 
 export const Edit = () => {
     
     const [errorTitle, setErrorTitel] = useState({})
-    const [errorDescribtion, setErrorDescribtion] = useState({})
+    const [errorDescription, setErrorDescription] = useState({})
     const [errorTypeOfDomain,setErrorTypeOfDomain] =useState({})
     const [errorMemory, setErroMemory] =useState({})
     const [helperTextTitle, setHelperTextTitel] =useState()
-    const [helperTextDescribtion, setHelperTextDescribtion] =useState()
+    const [helperTextDescription, setHelperTextDescription] =useState()
     const [helperTextTypeOfDomain, setHelperTextTypeOfDomain] =useState()
     const [helperTextMemory, setHelperTextMemory] =useState()
     const [validcpu, setvalidcpu] = useState([])
@@ -31,7 +31,7 @@ export const Edit = () => {
     }, []);
 
     const handleUpdate = async () => {
-        if(errorDescribtion.error||errorMemory.error||errorTitle.error ||errorTypeOfDomain.error){
+        if(errorDescription.error||errorMemory.error||errorTitle.error ||errorTypeOfDomain.error){
             alert("The form is incorrect, it is not possible to save changes");
         }else {
             updateWebsite(currentWebSite);
@@ -52,17 +52,17 @@ export const Edit = () => {
         }
     };
 
-    const setDescribtion = (describtion) => {
-        let helperText = validateDescribtion(describtion)
+    const setDescription = (description) => {
+        let helperText = validateDescription(description)
         if (!helperText) {
-            setErrorDescribtion({ error: false })
-            setHelperTextDescribtion('')
-            const describtionObject = { ...currentWebSite }
-            describtionObject.description = describtion
-            setCurrentWebSite(describtionObject)
+            setErrorDescription({ error: false })
+            setHelperTextDescription('')
+            const descriptionObject = { ...currentWebSite }
+            descriptionObject.description = description
+            setCurrentWebSite(descriptionObject)
         } else {
-            setErrorDescribtion({ error: true })
-            setHelperTextDescribtion(helperText)
+            setErrorDdescription({ error: true })
+            setHelperTextDescription(helperText)
         }
     };
 
@@ -123,13 +123,13 @@ export const Edit = () => {
                 />
                 <br></br>
                 <TextField
-                    {...errorDescribtion}
+                    {...errorDescription}
                     id="Standard-error"
                     label="Description"
                     defaultValue={currentWebSite.description}
                     variant="standard"
-                    onChange={(e) => setDescribtion(e.target.value)}
-                    helperText={helperTextDescribtion}
+                    onChange={(e) => setDescription(e.target.value)}
+                    helperText={helperTextDescription}
                 />
                 <br></br>
                 <TextField
@@ -165,6 +165,13 @@ export const Edit = () => {
                     variant="standard"
                     onChange={(e) => setMemory(e.target.value)}
                     helperText={helperTextMemory}
+                />
+                <br></br>
+                <TextField
+                    id="standard-error"
+                    label="Logo"
+                    defaultValue={currentWebSite.logo}
+                    variant="standard"
                 />
                 <br></br>
                 <div id='buttonform'>

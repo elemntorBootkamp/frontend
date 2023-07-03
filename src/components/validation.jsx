@@ -12,7 +12,7 @@ export const validateTitle=(title)=>{
     }
 };
 
-export const validateDescribtion=(describtion)=> {
+export const validateDescription=(describtion)=> {
     if (describtion.length > 100) {
        return 'Maximum length 100 characters';
     }else if (describtion.length === 0) {

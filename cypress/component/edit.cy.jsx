@@ -35,7 +35,6 @@ describe('Edit component', () => {
     cy.get('[role="option"]').filter(':contains("Intel Core i3")').click() /
     cy.get('#standard-error').clear().type('new memory')
     cy.get('#buttonform').click()
-    // Check that the `updateWebsite` function is called with the correct data
   })
 
   it('should display error messages when input is invalid', () => {

@@ -7,20 +7,17 @@ import { set_current_websie } from "../redux/dataActions";
 import { getAllWebsites } from "../api/api";
 import { useEffect } from "react";
 import "./dashboard.css";
-
 export const Dashboard = () => {
-  
   useEffect(() => {
     async function fetchData() {
         const data=await getAllWebsites();
         setallWebsites(data);
     }
-    fetchData();  
+    fetchData();
   },[]);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [allWebsites, setallWebsites] = useState([]);
-
   const handleBoxClick = (id) => {
     setallWebsites((web) =>
       web.map((website) =>
@@ -48,7 +45,6 @@ export const Dashboard = () => {
           </div>
           {website.showDetails && (
             <div className="details">
-                
                 <a className="closebtn"  onClick={() => {
                   handleBoxClick(website.id);
                 }}>&times;</a>
