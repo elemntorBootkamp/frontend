@@ -17,13 +17,17 @@ import {produce} from 'immer'
         { idUsers: 3,name: "שושי",typeUser: [1,4],basket: [] },
         { idUsers: 3,name: "שירה",typeUser: [3],basket: [] },
     ],
-    currentWebsit:{}
+    currentWebsite:{},
+    allWebsites:[]
 }
 export const dataReducer = produce((state, action) => {
     switch (action.type) {
         case "SET_CURRENT_WEBSITE":
-            state.currentWebsit = action.payload
+            state.currentWebsite = action.payload
             break;
+        case "SET_ALL_WEBSITES":
+                state.allWebsites ={...action.payload}
+                break;
         default:
             break;
     }

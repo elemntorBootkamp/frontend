@@ -19,8 +19,9 @@ export const Edit = () => {
     const [helperTextTypeOfDomain, setHelperTextTypeOfDomain] =useState()
     const [helperTextMemory, setHelperTextMemory] =useState()
     const [validcpu, setvalidcpu] = useState([])
-    const website = useSelector(state => state.currentWebsit)
+    const website = useSelector(state => state.currentWebsite)
     const [currentWebSite, setCurrentWebSite] = useState(website)
+    const currentCpu=website.cpu
 
     useEffect(() => {
         async function fetchData() {
@@ -61,7 +62,7 @@ export const Edit = () => {
             descriptionObject.description = description
             setCurrentWebSite(descriptionObject)
         } else {
-            setErrorDdescription({ error: true })
+            setErrorDescription({ error: true })
             setHelperTextDescription(helperText)
         }
     };
@@ -85,6 +86,13 @@ export const Edit = () => {
         const cpuObject = { ...currentWebSite }
         cpuObject.cpu = cpu
         setCurrentWebSite(cpuObject)
+    };
+
+    const setLogo = (logo) => {
+        console.log(cpu1);
+        const logoObject = { ...currentWebSite }
+        logoObject.logo = logo
+        setCurrentWebSite(logoObject)
     };
 
     const setMemory = (memory) => {
@@ -152,7 +160,10 @@ export const Edit = () => {
                 >
                     {validcpu.map((option) => (
                         <MenuItem key={option.value} value={option.value}>
-                            {option.label}
+                            {option.label === currentCpu ?
+                                <b>{option.label}</b> :
+                                 <>{option.label}</>
+                            }
                         </MenuItem>
                     ))}
                 </TextField>
@@ -167,11 +178,13 @@ export const Edit = () => {
                     helperText={helperTextMemory}
                 />
                 <br></br>
+
                 <TextField
                     id="standard-error"
                     label="Logo"
                     defaultValue={currentWebSite.logo}
                     variant="standard"
+                    onChange={(e)=>{setLogo(e.target.value)}}
                 />
                 <br></br>
                 <div id='buttonform'>

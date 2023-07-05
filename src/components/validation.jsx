@@ -1,7 +1,7 @@
 export const validateTitle=(title)=>{
     if (title.length > 50) {
         return'Maximum length 50 characters';
-    }else if (title.length === 0) {
+    }else if (!title) {
         return'required';
     }else if (title.length < 3) {
         return 'Minimum length 3 characters'
@@ -15,7 +15,7 @@ export const validateTitle=(title)=>{
 export const validateDescription=(describtion)=> {
     if (describtion.length > 100) {
        return 'Maximum length 100 characters';
-    }else if (describtion.length === 0) {
+    }else if (!describtion) {
         return 'required';
     }else if (describtion.length < 10) {
        return 'Minimum length 10 characters';
@@ -29,7 +29,7 @@ export const validateDescription=(describtion)=> {
  export const validateTypeOfDomain=(typeOfDomain)=>{
     if (typeOfDomain.length > 63) {
         return 'Maximum length 63 characters';
-    }else if (typeOfDomain.length == 0) {
+    }else if (!typeOfDomain) {
        return 'required';
     }else if (!/^[a-zA-Z0-9-]+$/.test(typeOfDomain)) {
        return 'Can only contain English letters, numbers and dashes';
@@ -41,7 +41,7 @@ export const validateDescription=(describtion)=> {
 };
 
 export const validateMemory=(memory)=>{
-    if(memory===''){
+    if(!memory){
        return 'required';
     }if (!/^\d+$/.test(memory)) {
         return 'Can only contain numbers';
@@ -49,5 +49,11 @@ export const validateMemory=(memory)=>{
         return'Number must be bigger than 10';
     }else {
        return '';
+    }
+};
+
+export const validateLogo=(logo)=>{
+    if(!logo){
+        return 'required';
     }
 };
