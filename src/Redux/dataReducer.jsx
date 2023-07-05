@@ -12,17 +12,25 @@ import {produce} from 'immer'
     ],
 
     users: [
-        { idUsers: 1, name: "רחלי", typeUser: [2], basket: [] },
-        { idUsers: 2, name: "יעל", typeUser: [2, 4], basket: [] },
-        { idUsers: 3, name: "שושי", typeUser: [1, 4], basket: [] },
-        { idUsers: 3, name: "שירה", typeUser: [3], basket: [] },
-    ]
+        { idUsers: 1,name: "רחלי",typeUser: [2],basket: [] },
+        { idUsers: 2,name: "יעל",typeUser: [2,4],basket: [] },
+        { idUsers: 3,name: "שושי",typeUser: [1,4],basket: [] },
+        { idUsers: 3,name: "שירה",typeUser: [3],basket: [] },
+    ],
+    currentWebsite:{},
+    allWebsites:[]
 }
-
-
-
 export const dataReducer = produce((state, action) => {
-    
+    switch (action.type) {
+        case "SET_CURRENT_WEBSITE":
+            state.currentWebsite = action.payload
+            break;
+        case "SET_ALL_WEBSITES":
+                state.allWebsites ={...action.payload}
+                break;
+        default:
+            break;
+    }
 }, InitialState)
 
 

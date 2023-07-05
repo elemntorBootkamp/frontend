@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-
 describe('Button Component', () => {
 	beforeEach(() => {
 		cy.visit('http://localhost:3000');
