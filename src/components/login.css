@@ -236,6 +236,7 @@ html {
     background-color: #B1EE50;
     content: "";
     transition: width 0.2s;
+    
   }
   
   .underlineHover:hover {

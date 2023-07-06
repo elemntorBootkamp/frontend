@@ -1,31 +1,54 @@
+/* eslint-disable semi */
+/* eslint-disable no-extra-semi */
+/* eslint-disable indent */
+/* eslint-disable react/no-unknown-property */
+/* eslint-disable no-mixed-spaces-and-tabs */
 /* eslint-disable no-debugger */
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { useKeycloak } from '@react-keycloak/web';
-
+// import { sendToken } from '../API/api';
+// import { sendTokenTNode } from '../Redux/action';
+// import { sendTokenTNode } from '../Redux/action';
+import axios from 'axios';
 const Nav = () => {
 	debugger;
 	const { keycloak, initialized } = useKeycloak();
+
 	// eslint-disable-next-line no-unused-vars
 	const [authenticated, setAuthenticated] = useState(false);
 	// eslint-disable-next-line no-unused-vars
-	const [token, setToken] = useState(null);
+
+
 	debugger;
 	useEffect(() => {
 		console.log('wow!!!!!😉');
-		
+		// console.log(keycloak.authenticated());
 		if (initialized) {
 			setAuthenticated(keycloak.authenticated);
-			keycloak.getToken()
-				.then((token) => {
-					setToken(token);
-				})
-				.catch((error) => {
-					console.error('Failed to get token', error);
-				});
+			//  sendToken(keycloak.token);
+			//   sendTokenTNode(keycloak.token);
+
 		}
 	}, [initialized, keycloak.authenticated]);
 	debugger;
+	const handleApiCall = async () => {
+		try {
+			debugger
+			console.log('😛');
+			const config = {
+				headers: { Authorization: `Bearer ${keycloak.token}` },
+			};
+			console.log('😛😛');
+			const response = await axios.get('http://localhost:8090/token',config);
+
+			// const response = await axios.get('http://localhost:8090/protected',config);
+			console.log('😛😛😛');
+			console.log(response.data);
+		} catch (error) {
+			console.error(error);
+		}
+	};
 	const handleLogout = async () => {
 		await keycloak.logout();
 		setAuthenticated(false);
@@ -38,21 +61,47 @@ const Nav = () => {
 	const handleSignUp = () => {
 		keycloak.register();
 	};
-	debugger;
-	return (
-		<div>
-			<button onClick={handleLogout}>Logout</button>
+	const handleClick = () => {
+		keycloak.accountManagement();
+	};
+	// const handleApiCall = async () => {
+	//     try {
+	//       // Add the token to the Authorization header
+	//       const config = {
+	//         headers: { Authorization: `Bearer ${keycloak.token}` },
+	//       };
+	//       const response = await axios.get('http://localhost:8090/api/protected', config);
+	//       console.log(response.data);
+	//     } catch (error) {
+	//       console.error(error);
+	//     }
+	//   };
+	
 
-			<button onClick={handleLogin}>Log in</button>
-			<button onClick={handleSignUp}>Sign up</button>
+
+	return (
+
+		<div>
+			{initialized && authenticated ? (
+
+				console.log('Access token:', keycloak.token),
+				console.log('ID token:', keycloak.idToken),
+
+				<>
+					<h2>Welcome, {keycloak.tokenParsed.preferred_username}!</h2>
+					<button onClick={handleLogout}>Logout</button>
+					<button onClick={handleClick}>Edit Profile</button>
+					<button onClick={handleApiCall}>Call Protected API</button>
+				</>
+
+
+			) : (
+				<>
+					<button onClick={handleLogin}>Login</button>
+					<button onClick={handleSignUp}>Sign up</button>
+				</>
+			)}
 		</div>
-	// <div>
-	// //   {initialized && authenticated ? (
-	//     <button onClick={handleLogout}>Logout</button>
-	//   ) : (
-	//     <button onClick={handleLogin}>Login</button>
-	//   )}
-	// </div>
 	);
 };
 
