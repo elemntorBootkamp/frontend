@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import { getAllWebsites } from '../api/api';
+import { getAllWebsites } from '../API/api';
 import { useDispatch } from 'react-redux';
 import { set_all_website } from '../redux/dataActions';
-import { Card } from './Card';
-
+import { Card } from '../components/card';
+import './card.css';
 export const Dashboard = () => {
 
 	const [allwebsites, setallwebsites] = useState([]);
@@ -22,7 +22,11 @@ export const Dashboard = () => {
 		{
 			(allwebsites !== undefined && allwebsites.length > 0) && (
 				allwebsites.map((website) =>
-					<Card key={website.id} website={website}></Card>
+					<div className='allCards' key={website._id}>
+						<div className="cards" >
+							<Card key={website.id} website={website}></Card>
+						</div>
+					</div>
 				)
 			)
 		}
