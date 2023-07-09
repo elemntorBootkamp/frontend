@@ -1,18 +1,12 @@
-/* eslint-disable semi */
-/* eslint-disable no-extra-semi */
-/* eslint-disable indent */
-/* eslint-disable react/no-unknown-property */
 /* eslint-disable no-mixed-spaces-and-tabs */
-/* eslint-disable no-debugger */
+
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { useKeycloak } from '@react-keycloak/web';
-// import { sendToken } from '../API/api';
-// import { sendTokenTNode } from '../Redux/action';
-// import { sendTokenTNode } from '../Redux/action';
+
 import axios from 'axios';
 const Nav = () => {
-	debugger;
+	
 	const { keycloak, initialized } = useKeycloak();
 
 	// eslint-disable-next-line no-unused-vars
@@ -20,7 +14,7 @@ const Nav = () => {
 	// eslint-disable-next-line no-unused-vars
 
 
-	debugger;
+	
 	useEffect(() => {
 		console.log('wow!!!!!😉');
 		// console.log(keycloak.authenticated());
@@ -31,20 +25,18 @@ const Nav = () => {
 
 		}
 	}, [initialized, keycloak.authenticated]);
-	debugger;
+	
 	const handleApiCall = async () => {
 		try {
-			debugger
+			
 			console.log('😛');
 			const config = {
 				headers: { Authorization: `Bearer ${keycloak.token}` },
 			};
 			console.log('😛😛');
-			const response = await axios.get('http://localhost:8090/token',config);
-
-			// const response = await axios.get('http://localhost:8090/protected',config);
+			 const response = await axios.get('http://localhost:8090/protected',config);
 			console.log('😛😛😛');
-			console.log(response.data);
+			 console.log(response.data);
 		} catch (error) {
 			console.error(error);
 		}
