@@ -21,6 +21,7 @@ export const Edit = () => {
     const [validcpu, setvalidcpu] = useState([])
     const website = useSelector(state => state.currentWebsite)
     const [currentWebSite, setCurrentWebSite] = useState(website)
+    const [domainList,setDomainList]=useState({...currentWebSite.domain});
     const currentCpu=website.cpu
 
     useEffect(() => {
@@ -31,11 +32,19 @@ export const Edit = () => {
         fetchData();
     }, []);
 
-    const handleUpdate = async () => {
+    const handleUpdate = async () => {        
         if(errorDescription.error||errorMemory.error||errorTitle.error ||errorTypeOfDomain.error){
             alert("The form is incorrect, it is not possible to save changes");
         }else {
-            updateWebsite(currentWebSite);
+            let domain = [];
+            for (var key in domainList) {
+                if (domainList.hasOwnProperty(key)) {
+                    domain.push(domainList[key]);
+                }
+            };
+            const object={...currentWebSite};
+            object.domain=domain;
+            updateWebsite(object);
         }
     };
 
@@ -108,6 +117,13 @@ export const Edit = () => {
             setHelperTextMemory(helperText)
         }
     };
+
+    const setDomain=(domain,index)=>{
+        let arrDomain={...domainList};
+        arrDomain[index]=domain;
+        setDomainList(arrDomain);
+    };
+    
     return <>
         <Box
             component="form"
@@ -150,6 +166,17 @@ export const Edit = () => {
                     helperText={helperTextTypeOfDomain}
                 />
                 <br></br>
+                {
+                    Object.keys(domainList).map((key, index) =>
+                    <TextField
+                    key={key}
+                    id="standard-error"
+                    label="Domain"
+                    defaultValue={domainList[key]}
+                    variant="standard"
+                    onChange={(e)=>setDomain(e.target.value,index)}
+                />)
+                }
                 <TextField
                     id="standard-select-currency"
                     select
@@ -179,13 +206,13 @@ export const Edit = () => {
                 />
                 <br></br>
 
-                <TextField
+                {/* <TextField
                     id="standard-error"
                     label="Logo"
                     defaultValue={currentWebSite.logo}
                     variant="standard"
                     onChange={(e)=>{setLogo(e.target.value)}}
-                />
+                /> */}
                 <br></br>
                 <div id='buttonform'>
                     <Button primary label="ok" onClick={async()=>{handleUpdate();}}></Button>

@@ -1,6 +1,4 @@
-import { useDispatch } from 'react-redux';
 import { Button } from './button';
-import { useNavigate } from 'react-router';
 import { useState } from 'react';
 import { MoreDetails } from './moreDetails';
 import './card.css';
@@ -11,7 +9,7 @@ export const Card = ({ website }) => {
 	return (
 		<div className="cards">
 			<div className="card">
-				<img src={website.logo} style={{ width: '50px' }} className='icon'></img>
+				{/* <img src={website.logo} style={{ width: '50px' }} className='icon'></img> */}
 				<h2 className="title">{website.title}</h2>
 				<p className="info">{website.description}</p>
 				<ul className="info">
