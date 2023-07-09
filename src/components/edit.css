@@ -1,9 +1,12 @@
 #box{
     margin-top: 30px;
-    border-radius: 10px;
-    border: solid #b1ee50 2px;
+    border: solid #b1ee50 4px;
     width: 30%;
     margin-left: 35%;
+    border-radius: 15px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+
+
 }
 #buttonform{
  margin-top: 20px;
