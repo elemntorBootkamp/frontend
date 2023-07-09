@@ -11,14 +11,15 @@ export const MoreDetails=({website})=>{
 
     return <>
     <div id="divDetails">
+    <img src={website.websiteLogo} style={{ width: '50px' }}></img>
     <h3>{website.title}</h3>
     <h4>{website.description}</h4>
-    <label>The site requires a processor {website.cpu} 
-    and size memory {website.memory}. The site status {website.status}. 
+    <label>The site requires a processor {website.cpu}
+    and size memory {website.memory}. The site status{" "+website.status+". "} 
     {
         website.domain.length>0 &&
-        <>
-        You can access the website at: 
+        <> 
+        You can access the website at: www.
         {website.domain.map((domain)=><label key={domain}> {domain} </label>)}
         </>
     }</label>
