@@ -1,6 +1,7 @@
 import {produce} from 'immer';
 
 const InitialState = {
+	manager:'Sundar Pichai', //'Sundar Pichai Andy Jassy'
 	userNameManager: 'Manager',
 	userNamePassword: '😂🤣🤣',
 	wishes: ['שנה וטבה', 'כתיבה וחתימה טובה', 'שנת בריאות ושמחות'],

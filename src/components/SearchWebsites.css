@@ -1,0 +1,36 @@
+#div1 {
+    border: 1px solid black;
+    width: 16%;
+    display: inline-block;
+    border-radius: 10px;
+}
+
+#div2{
+    border-radius: 10px;
+    border-color: 1px solid dimgrey;
+}
+
+input[type=text] {
+    border: none;
+    border-bottom: 1px solid #000;
+    padding: 0px 0;
+}
+  
+input[type=text]::placeholder {
+    position: relative;
+    top: -20px;
+}
+
+input[type=text]:focus {
+    outline: none;
+    border-bottom: 2px solid #00f;
+}
+
+#btnFilter{
+    background-image: url('../../public/filter.jpg');
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 30px;
+    height: 30px;
+}
