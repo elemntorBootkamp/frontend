@@ -7,6 +7,7 @@ import { getValidCpu, updateWebsite } from "../api/api";
 import { validateDescription, validateTitle, validateTypeOfDomain, validateMemory } from "./validation";
 import { useEffect, useState } from "react";
 import './edit.css'
+import { useNavigate } from "react-router";
 
 export const Edit = () => {
     
@@ -23,6 +24,7 @@ export const Edit = () => {
     const [currentWebSite, setCurrentWebSite] = useState(website)
     const [domainList,setDomainList]=useState({...currentWebSite.domain});
     const currentCpu=website.cpu
+    const navigate=useNavigate();
 
     useEffect(() => {
         async function fetchData() {
@@ -45,6 +47,7 @@ export const Edit = () => {
             const object={...currentWebSite};
             object.domain=domain;
             updateWebsite(object);
+            navigate('/dashboard')
         }
     };
 
@@ -206,13 +209,13 @@ export const Edit = () => {
                 />
                 <br></br>
 
-                {/* <TextField
+                <TextField
                     id="standard-error"
                     label="Logo"
-                    defaultValue={currentWebSite.logo}
+                    defaultValue={currentWebSite.websiteLogo}
                     variant="standard"
                     onChange={(e)=>{setLogo(e.target.value)}}
-                /> */}
+                />
                 <br></br>
                 <div id='buttonform'>
                     <Button primary label="ok" onClick={async()=>{handleUpdate();}}></Button>
