@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import 'cypress-react-selector';
 
 describe('Page component', () => {
