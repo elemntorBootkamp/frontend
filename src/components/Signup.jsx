@@ -1,6 +1,6 @@
-/* eslint-disable react/react-in-jsx-scope */
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
+import React from 'react';
+
+// eslint-disable-next-line react/prop-types, no-unused-vars
 export const Signup = ({component}) => {
 	return <>
 		{
