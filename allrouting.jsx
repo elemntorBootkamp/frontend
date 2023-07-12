@@ -5,7 +5,7 @@ import { Signup } from './src/components/signup';
 import { Dashboard } from './src/components/Dashboard';
 import { Page } from './src/components/Page';
 
-
+import { Edit } from './src/components/Edit';
 
 export const Routing=()=>{
 	return<>
@@ -14,6 +14,8 @@ export const Routing=()=>{
 			<Route path="login/:component" element={<Login/>} />
 			<Route path="signup" element={<Signup/>}/>
 			<Route path="dashboard" element={<Dashboard/>}/>
+			<Route path="Edit" element={<Edit/>}/>
+
 		</Routes>
 	</>;
 };

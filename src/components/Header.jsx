@@ -1,71 +1,83 @@
-/* eslint-disable no-debugger */
-/* eslint-disable react/no-unescaped-entities */
-/* eslint-disable react/react-in-jsx-scope */
-/* eslint-disable react/prop-types */
+
 import PropTypes from 'prop-types';
 import { Button } from '../components/Button';
 import './header.css';
-import { Profile } from './profile';
+import { useSelector } from 'react-redux';
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { useKeycloak } from '@react-keycloak/web';
+import { useNavigate } from 'react-router';
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
-
+import { UpdateCurrentUser } from '../Redux/action';
+import { useDispatch } from 'react-redux';
+import { updateKeycloak } from '../Redux/action';
 import {
 	MDBInput,
 	MDBCheckbox,
 	MDBBtn
 } from 'mdb-react-ui-kit';
 
+// import { update } from 'cypress/types/lodash';
+
 export const
-	// eslint-disable-next-line no-unused-vars
 	Header = ({ onLogin, onLogout, ondashbord, onsignup, component }) => {
 		// When the user clicks anywhere outside of the modal, close it
-		var modal = document.getElementById('id01');
-
-		{
-			window.onclick = function (event) {
-				if (event.target == modal) {
-					modal.style.display = 'none';
-				}
-			};
-		}
-
+		
 
 		const { keycloak, initialized } = useKeycloak();
-		// eslint-disable-next-line no-unused-vars
 		const [authenticated, setAuthenticated] = useState(false);
-		// eslint-disable-next-line no-unused-vars
 		const [token, setToken] = useState(null);
+
+		const userDispach=useDispatch();
+		const updateTokenDispach=useDispatch();
+
 		debugger;
 		useEffect(() => {
 			console.log('wow!!!!!😉');
 
 			if (initialized) {
+				console.log(initialized+"keycloak.authenticated")
+				console.log("token"+ keycloak.token)
+
+				debugger
 				setAuthenticated(keycloak.authenticated);
-				// keycloak.getToken()
-				// 	.then((token) => {
-				// 		setToken(token);
-				// 	})
-				// 	.catch((error) => {
-				// 		console.error('Failed to get token', error);
-				// 	});
+				if(keycloak.authenticated){
+					const fullName = keycloak.tokenParsed.name;
+
+				const CurrentUser={
+					firstName :  fullName.split(' ')[0] ,
+					lastName: fullName.split(' ')[1],
+					email: keycloak.tokenParsed.email,
+					password: keycloak.tokenParsed.password, 
+				  };
+				  debugger
+				  userDispach(UpdateCurrentUser(CurrentUser))
+				  updateTokenDispach(updateKeycloak(keycloak))
+				}
+				  console.log("cchhhhhhhhhhhhhhhhhhhhh",keycloak.token);
 			}
 		}, [initialized, keycloak.authenticated]);
 		debugger;
+		const navigateToEdit=useNavigate();
 		const handleLogout = async () => {
 			await keycloak.logout();
 			setAuthenticated(false);
 		};
 		debugger;
 		const handleLogin = () => {
-			keycloak.login();
-			console.log(keycloak.authenticated());
-		};
+		keycloak.login();
+		console.log(keycloak.authenticated());
+
+	};
 		const handleSignUp = () => {
 			keycloak.register();
 		};
-		debugger;
+	
+		const openEditComponent=()=>{
+			if(keycloak.authenticated){
+			navigateToEdit('/Edit')}
+			else handleLogin();
+		}
 		return <>
 			<header>
 				<div className="storybook-header">
@@ -82,42 +94,10 @@ export const
 
 
 
-							<button onClick={() => document.getElementById('id01').style.display = 'block'} style={{ width: '45px', height: '45px', borderRadius: '50%', backgroundColor: 'white' }}><img src={'icons8-customer-30.png'} ></img></button>
+							{/* <button onClick={() => document.getElementById('id01').style.display = 'block'} style={{ width: '45px', height: '45px', borderRadius: '50%', backgroundColor: 'white' }}><img src={'icons8-customer-30.png'} ></img></button> */}
 
-							<div id="id01" className="modal">
+													<button onClick={openEditComponent} style={{ width: '45px', height: '45px', borderRadius: '50%', backgroundColor: 'white' }}><img src={'icons8-customer-30.png'} ></img></button>
 
-								<form className="modal-content animate" >
-									<div className="imgcontainer">
-										<span onClick="document.getElementById('id01').style.display='none'" className="close" title="Close Modal">&times;</span>
-									</div>
-									<div style={{ marginLeft: '58%' }} >
-										<Profile></Profile>
-									</div>
-									<div className="container">
-										<form>
-											<MDBInput id='form4Example1' wrapperClass='mb-4' label='Name' />
-											<MDBInput type='email' id='form4Example2' wrapperClass='mb-4' label='Email address' />
-											<MDBInput wrapperClass='mb-4' textarea id='form4Example3' rows={4} label='Message' />
-
-											<MDBCheckbox
-												wrapperClass='d-flex justify-content-center mb-4'
-												id='form4Example4'
-												label='Send me a copy of this message'
-												defaultChecked
-											/>
-
-											<MDBBtn type='submit' className='mb-4' block>
-												Sign in
-											</MDBBtn>
-										</form>      </div>
-
-									<div className="container" style={{ backgroundColor: '#f1f1f1' }}>
-
-										<button onClick={() => document.getElementById('id01').style.display = 'none'} className="cancelbtn">Cancel</button>
-										<span className="psw">Forgot <a href="#">password?</a></span>
-									</div>
-								</form>
-							</div>
 						</>
 						{/*                         
                         {
