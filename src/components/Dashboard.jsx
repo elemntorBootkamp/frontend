@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { getAllWebsites } from '../API/api';
+import { getAllWebsites } from '../api/api';
 import { useDispatch } from 'react-redux';
 import { set_all_website } from '../redux/dataActions';
 import { Card } from '../components/card';

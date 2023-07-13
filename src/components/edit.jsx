@@ -91,7 +91,7 @@ export const Edit = () => {
     const setLogo = (logo) => {
         console.log(cpu1);
         const logoObject = { ...currentWebSite }
-        logoObject.logo = logo
+        logoObject.websiteLogo = logo
         setCurrentWebSite(logoObject)
     };
 
@@ -182,7 +182,7 @@ export const Edit = () => {
                 <TextField
                     id="standard-error"
                     label="Logo"
-                    defaultValue={currentWebSite.logo}
+                    defaultValue={currentWebSite.websiteLogo}
                     variant="standard"
                     onChange={(e)=>{setLogo(e.target.value)}}
                 />

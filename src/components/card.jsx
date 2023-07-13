@@ -1,20 +1,22 @@
-import { useDispatch } from 'react-redux';
 import { Button } from './button';
-import { useNavigate } from 'react-router';
 import { useState } from 'react';
 import { MoreDetails } from './moreDetails';
 import './card.css';
+import { addBackupApi } from '../api/apiBackup';
 
 export const Card = ({ website }) => {
 	const [style, setStyle] = useState('none')
-
+	const addBackup = async () => {
+		addBackupApi(website);
+	}
 	return (
-
 			<div className="card" >
 				<img src={website.websiteLogo} style={{ height: '40px' }}></img>
 				<h2 className="title">{website.title}</h2>
 				<p className="info">{website.description}</p>
 				<Button label='more details' onClick={() => { setStyle('block') }} ></Button>
+				<br></br>
+				<Button label='came back' onClick={async()=>{addBackup()}}></Button>
 				<div id="id01" className="modal" style={{ display: style === 'none' ? 'none' : 'block' }}>
 					<div className="modalContent animate" >
 						<div className="imgcontainer">
@@ -22,8 +24,9 @@ export const Card = ({ website }) => {
 						</div>
 						<div className="container">
 							{
-								style !== 'none' &&
+							style !== 'none' &&
 								<MoreDetails website={website}></MoreDetails>
+								
 							}
 						</div>
 					</div>

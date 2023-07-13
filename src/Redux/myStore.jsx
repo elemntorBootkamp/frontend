@@ -6,6 +6,6 @@ const reducers =dataReducer ;
  
 export const ourStore = createStore(reducers)
 
- window.store=ourStore;
+window.store=ourStore;
 
 

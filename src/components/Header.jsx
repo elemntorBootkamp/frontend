@@ -5,7 +5,7 @@ import './header.css';
 
 export const
 
-	Header = ({ onLogin, onLogout, ondashbord, onsignup, component }) => {
+	Header = ({ onLogin, onLogout, ondashbord, onsignup, component, onbackup }) => {
 		return <>
 			<header>
 				<div className="storybook-header">
@@ -14,18 +14,29 @@ export const
 					</div>
 					<div>
 						{
-							component.localeCompare('login')===0 || component.localeCompare('signup')===0?
+							component === 'login' || component === 'signup' ?
 								<> <Button size="small" onClick={onLogout} label="Log out" />
 									<Button size="small" onClick={ondashbord} label="dashboard" />
+									<Button size="small" onClick={onbackup} label="backups" />
+
 								</>
 								:
-								component.localeCompare('dashboard')===0 ?
-									<Button size="small" onClick={onLogout} label="Log out" />
-									:
+								component === 'dashboard' ?
 									<>
-										<Button size="small" onClick={onLogin} label="Log in" />
-										<Button primary size="small" onClick={onsignup} label="Sign up" />
+										<Button size="small" onClick={onLogout} label="Log out" />
+										<Button size="small" onClick={onbackup} label="backups" />
 									</>
+									:
+									component === 'backup' ?
+										<>
+											<Button size="small" onClick={onLogout} label="Log out" />
+											<Button size="small" onClick={ondashbord} label="dashboard" />
+										</>
+										:
+										<>
+											<Button size="small" onClick={onLogin} label="Log in" />
+											<Button primary size="small" onClick={onsignup} label="Sign up" />
+										</>
 						}
 
 					</div>
