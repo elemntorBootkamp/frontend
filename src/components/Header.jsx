@@ -17,16 +17,11 @@ import {
 	MDBBtn
 } from 'mdb-react-ui-kit';
 
-// import { update } from 'cypress/types/lodash';
-
 export const
-	Header = ({ onLogin, onLogout, ondashbord, onsignup, component }) => {
-		// When the user clicks anywhere outside of the modal, close it
-		
+	Header = ({ onLogin, onLogout, ondashbord, onsignup, component }) => {		
 
 		const { keycloak, initialized } = useKeycloak();
 		const [authenticated, setAuthenticated] = useState(false);
-		const [token, setToken] = useState(null);
 
 		const userDispach=useDispatch();
 		const updateTokenDispach=useDispatch();
@@ -54,7 +49,7 @@ export const
 				  userDispach(UpdateCurrentUser(CurrentUser))
 				  updateTokenDispach(updateKeycloak(keycloak))
 				}
-				  console.log("cchhhhhhhhhhhhhhhhhhhhh",keycloak.token);
+				  console.log("keycloak.token",keycloak.token);
 			}
 		}, [initialized, keycloak.authenticated]);
 		debugger;
@@ -78,6 +73,7 @@ export const
 			navigateToEdit('/Edit')}
 			else handleLogin();
 		}
+		
 		return <>
 			<header>
 				<div className="storybook-header">
@@ -87,35 +83,13 @@ export const
 
 					<div>
 						<>
-
 							<Button size="small" onClick={handleLogout} label="Log out" />
 							<Button size="small" onClick={handleLogin} label="Log in" />
 							<Button primary size="small" onClick={handleSignUp} label="Sign up" />
 
-
-
-							{/* <button onClick={() => document.getElementById('id01').style.display = 'block'} style={{ width: '45px', height: '45px', borderRadius: '50%', backgroundColor: 'white' }}><img src={'icons8-customer-30.png'} ></img></button> */}
-
-													<button onClick={openEditComponent} style={{ width: '45px', height: '45px', borderRadius: '50%', backgroundColor: 'white' }}><img src={'icons8-customer-30.png'} ></img></button>
+							<button onClick={openEditComponent} style={{ width: '45px', height: '45px', borderRadius: '50%', backgroundColor: 'white' }}><img src={'icons8-customer-30.png'} ></img></button>
 
 						</>
-						{/*                         
-                        {
-                            component.localeCompare('login')===0 || component.localeCompare('signup')===0?
-                                <> 
-                                    <Button size="small" onClick={handleLogout} label="Log out" />
-                                    <Button size="small" onClick={ondashbord} label="dashboard" />
-                                    
-                                </>
-                                :
-                                component.localeCompare('dashboard')===0 ?
-                                    <Button size="small" onClick={handleLogout} label="Log out" />
-                                    :
-                                    <>
-                                        <Button size="small" onClick={handleLogin} label="Log in" />
-                                        <Button primary size="small" onClick={handleSignUp} label="Sign up" />
-                                    </>
-                        } */}
 
 					</div>
 				</div>

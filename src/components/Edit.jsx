@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from 'react-router';
 import { useSelector } from "react-redux";
 import { Button } from '../components/Button';
@@ -11,10 +11,22 @@ export const Edit=()=>{
     let KeycloakSelector=useSelector((ourStore)=>{
       return ourStore.currentToken;
   });
+  const Fname=useRef(userSelector.firstName);
+  const Lname=useRef(userSelector.lastName);
+  const Email=useRef(userSelector.email);
+  const Pass=useRef(userSelector.password);
+
+  const [firstN, setfirstN] = useState(userSelector.firstName);
+  const [lastN, setlastN] = useState(userSelector.lastName);
+  const [mailN, setmailN] = useState(userSelector.email);
+  const [passN, setpassN] = useState(userSelector.password);
+
+  const [isEditMode, setisEditMode] = useState(false);
+
     useEffect(() => {
 
         console.log('wow!!!!!😉',userSelector);
-        console.log('!!!!😉😊😊😊😊😊😊😊😊😊😊😊😊😊😊😊😊😊😊😊😊😊😊',KeycloakSelector);
+        console.log('!!!!😉😊😊😊😊😊😊😊😊😊😊😊😊',KeycloakSelector);
 
 debugger
  document.getElementById('id01').style.display = 'block';
@@ -39,21 +51,49 @@ console.log(userSelector);
             debugger
             history.back();
                     }
-      const handleUpdateUserInfo = async () => {
-                      try {
-                        const response = await fetch('http://localhost:8080/admin/master/console/#/myrealm/users/3e34d749-951a-405e-8b62-9bf17638b8f0', {
-                          method: 'PUT',
-                          headers: {
-                            'Content-Type': 'http://localhost:8080/auth/admin',
-                            Authorization: `Bearer ${KeycloakSelector.token}`,
-                          },
-                          body: JSON.stringify({
-                            username: 'new_username',
-                            email: 'new_email@example.com',
-                            // Include any other updated user information here
-                          }),
-                        });
                     
+                    // const handleUpdateUserInfo = async () => {
+                    //   debugger
+                    //   try {
+                    
+                    //     await KeycloakSelector.init({ onLoad: 'login-required' });
+                    
+                    //     if (KeycloakSelector.authenticated) {
+                    //       const userId = '3e34d749-951a-405e-8b62-9bf17638b8f0'; // User ID to update
+                    //       const user = await KeycloakSelector.loadUserInfo();
+                    
+          
+                    //       user.userName = 'kkk';
+                    //       user.email = 'new_email@example.com';                    
+                    //       await KeycloakSelector.updateUser(user);
+                    
+                    //       console.log('User information updated successfully');
+                    //     } else {
+                    //       console.log('User not authenticated');
+                    //     }
+                    //   } catch (error) {
+                    //     console.log('Error updating user information:', error);
+                    //   }
+                    // };
+                   
+                    const handleUpdateUserInfo = async () => {
+               
+                      try {
+                        const response = await fetch(
+                          'http://localhost:8080/admin/myrealm/users/3e34d749-951a-405e-8b62-9bf17638b8f0',
+                          {method: 'PUT',
+                            headers: {
+                              'Content-Type': 'application/json',
+                              Authorization: `Bearer ${KeycloakSelector.token}`,
+                              mode: 'cors', 
+                            },
+                            body: JSON.stringify({
+                              userName: "kkk",
+                              email: 'new_email@example.com',
+                            }),
+                            mode: 'no-cors',
+                          }
+                        );
                         if (response.ok) {
                           console.log('User information updated successfully');
                         } else {
@@ -63,9 +103,39 @@ console.log(userSelector);
                         console.log('Error updating user information:', error);
                       }
                     };
-                    
-                      
-                              
+                const checkMail=()=>{
+                  const email = Email.current.value;
+                  const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+                
+                  if (email.match(emailRegex)) {
+                    setmailN(email)
+                  } else {
+                    alert("Invalid email");
+                  }
+                };
+                const checkFirstName = () => {
+                  const firstName = Fname.current.value;
+                  const nameRegex = /^[a-zA-Z\s]*$/;
+                
+                  if (nameRegex.test(firstName)) {
+                    setfirstN(firstName)    } 
+                    else {
+                    alert("Invalid first name");
+                  }
+                };
+                const checkLastName = () => {
+                  const lastName = Lname.current.value;
+                  const nameRegex = /^[a-zA-Z\s]*$/;
+                
+                  if (nameRegex.test(lastName)) {
+                    setlastN(lastName)       }
+                     else {
+                    alert("Invalid last name");
+                  }
+                };       
+             const ToEdit=()=>{
+              setisEditMode(!isEditMode);
+             }                 
     return<>
 
 <div id="id01" class="modal" >
@@ -77,62 +147,24 @@ console.log(userSelector);
 
     <div class="container">
       <label ><b>FirstName</b></label>
-      <input type="text" value={userSelector.firstName}  required/>
+      <input type="text" ref={Fname}   disabled={!isEditMode} onBlur={checkFirstName} placeholder={userSelector.firstName}  required/>
 
       <label ><b>LastName</b></label>
-      <input type="text" value={userSelector.lastName} required/>
-
+      <input type="text"  ref={Lname}  onBlur={checkLastName}  disabled={!isEditMode} placeholder={userSelector.lastName} required/>
       <label ><b>Mail</b></label>
-      <input type="text" value={userSelector.email}  required/>
+      <input type="text" ref={Email}  disabled={!isEditMode} onBlur={checkMail} placeholder={userSelector.email}  required/>
 
       <label ><b>Password</b></label>
-      <input type="password" value={userSelector.password}  required/>
-        
-
+      <input type="password"  ref={Pass} placeholder={userSelector.password}  required/>
+      
     </div>
 
     <div class="container" style={{backgroundColor:"#f1f1f1"}}>
       <button type="button" onClick={cancel} class="cancelbtn">Cancel</button>
       <Button size="small" onClick={handleUpdateUserInfo } label="SAVE" />
-
+      <Button size="small" onClick={ToEdit}  label="Edit" />
     </div>
   </form>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    	{/* <div id="id01" className="modal">
-
-<form className="modal-content animate" >
-        <span onClick="document.getElementById('id01').style.display='none'" className="close" title="Close Modal">&times;</span>
-    <div style={{ marginLeft: '58%' }} >
-    </div>
-    <div className="container">
-        <form>
-        <h1>hhh</h1>
-        </form>      </div>
-
-    <div className="container" style={{ backgroundColor: '#f1f1f1' }}>
-
-        <button  onClick={cancel} className="cancelbtn">Cancel</button>
-        <span className="psw">Forgot <a href="#">password?</a></span>
-    </div>
-</form>
-</div> */}
     </>
 }
