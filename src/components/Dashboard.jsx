@@ -1,27 +1,37 @@
-import { useEffect, useState } from 'react';
-import { getAllWebsites } from '../API/api';
+import React,{ useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { set_all_website } from '../redux/dataActions';
+import { useSelector } from 'react-redux';
+import { get_website } from '../Redux/dataActions.jsx';
 import { Card } from '../components/card';
+import { SearchWebsites } from './SearchWebsites.jsx';
 import './card.css';
+
 export const Dashboard = () => {
 
-	const [allwebsites, setallwebsites] = useState([]);
-	const dispatch = useDispatch();
+	const userId = useSelector((state) => state.userId);
+	const websiteData = useSelector((state) => state.websiteData);
+	const dispatch_get_website = useDispatch();
 
 	useEffect(() => {
-		async function fetchData() {
-			const response = await getAllWebsites();
-			dispatch(set_all_website(response))
-			setallwebsites(response);
+		async function fetchData(){
+			try{
+				await dispatch_get_website(get_website(userId));
+			}
+			catch(error){
+				return error;
+			}
 		}
 		fetchData();
-	}, []);
+	}, [dispatch_get_website, userId]);
+
+	useEffect(() => {
+	}, [websiteData]);
 
 	return <>
+		<SearchWebsites></SearchWebsites>
 		{
-			(allwebsites !== undefined && allwebsites.length > 0) && (
-				allwebsites.map((website) =>
+			websiteData && (
+				websiteData.map((website) =>
 					<div className='allCards' key={website._id}>
 						<div className="cards" >
 							<Card key={website.id} website={website}></Card>
@@ -30,6 +40,7 @@ export const Dashboard = () => {
 				)
 			)
 		}
+
 	</>;
 
 };

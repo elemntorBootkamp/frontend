@@ -1,0 +1,115 @@
+.search__container {
+    background-color: #B1EE50;;
+    padding: 20px;
+    align-items: center;
+}
+
+.search__input {
+    width: 50%;
+    border: none;
+    background-color: unset;
+    font-size: large;
+    color: #333;
+    padding-right: 30%;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+.search__input {
+    width: 30%;
+    padding-right: 50%;
+    }
+}
+
+@media (min-width: 1025px) {
+.search__input {
+    width: 30%;
+    padding-right: 55%;
+    }
+}
+
+@media (min-width: 300px) and (max-width: 768px) {
+.search__input {
+    width: 30%;
+    padding-right: 30%;
+    }
+}
+
+.btn {
+    width: 30px;
+    background-color: unset;
+    border: none;
+    padding-right: 10px;
+}
+
+.btnIcon {
+    width: 20px;
+}
+
+.searchBar {
+    border: solid #333 2px;
+    padding: 10px;
+    width: 50%;
+    border-radius: 15px;
+    align-items: center;
+    margin-left: 25%;
+}
+
+.textFieldMenu {
+    width: 80%;
+    padding: 10px;
+    height: 60px;
+}
+
+.textField {
+    width: 80%;
+    height: 60px;
+}
+
+#divFilter {
+    position: fixed;
+    z-index: 1000;
+    top: 80px;
+    background-color: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+    width: 70%;
+    margin-left: 15%;
+    padding: 10px;
+}
+
+#border2 {
+    margin: 5px;
+    padding: 20px;
+    border: solid lightgreen 2px;
+    border-radius: 15px;
+}
+
+#closeBtn {
+    color: #333;
+    margin-top: 10px;
+    margin-left: 10px;
+    :hover {
+        color: greenyellow;
+        height: 20px ;
+        }
+}
+
+.tooltip {
+    visibility: hidden;
+    width: 60px;
+    background-color: black;
+    color: white;
+    opacity: 80%;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+}
+
+.btn:hover .tooltip {
+    visibility: visible;
+}
+
+#btnClear {
+    margin-right: 10px;
+}

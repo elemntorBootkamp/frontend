@@ -32,12 +32,12 @@ export const
 
 					</div>
 				</div>
-				{
+				{/* {
 					component.localeCompare('') === 0 ?
 						<>
 							<label>On this website you can purchase and manage your websites cloud environment</label>
 						</> : <></>
-				}
+				} */}
 
 			</header>
 		</>;
