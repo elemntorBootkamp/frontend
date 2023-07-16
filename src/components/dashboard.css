@@ -4,7 +4,7 @@
   margin-left: 5px;
   margin-top: 30px;
   border-radius: 10px;
-  border: solid #b1ee50 2px;
+  border: solid #B1EE50 2px;
   min-height: 400px;
   min-width: 250px;
   position: relative;
@@ -52,5 +52,5 @@
   color: #fe222273;
 }
 p{
-  color: #b1ee50;
+  color: #B1EE50;
 }

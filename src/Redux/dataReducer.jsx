@@ -1,8 +1,11 @@
 import {produce} from 'immer';
 
 const InitialState = {
+
+	websiteData: null,
+	userId:'Sundar Pichai',
+
 	userNameManager: 'Manager',
-	manager:'Sundar Pichai', //'Sundar Pichai Andy Jassy'
 	userNamePassword: '😂🤣🤣',
 	wishes: ['שנה וטבה', 'כתיבה וחתימה טובה', 'שנת בריאות ושמחות'],
 	categories: [
@@ -23,6 +26,12 @@ const InitialState = {
 };
 export const dataReducer = produce((state, action) => {
 	switch (action.type) {
+	case 'GET_WEBSITE':
+	case 'SEARCH_WEBSITE':
+	case 'FILTER_WEBSITE':
+	case 'SORT_WEBSITE':
+		state.websiteData = action.payload;
+		break;
 	case 'SET_CURRENT_WEBSITE':
 		state.currentWebsite = action.payload;
 		break;
