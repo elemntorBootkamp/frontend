@@ -19,7 +19,7 @@ export const Backups=()=>{
     <div className='cards' key={backup._id}>
     <div className="card">
     <h5>{backup.description}</h5>
-    <Button label="came back"></Button>
+    <Button label="backup"></Button>
     </div>
     </div>)
     }

@@ -31,8 +31,7 @@ export const MoreDetails=({website})=>{
     </div>
     <div id="buttonMoreDetails">
     <Button label='edit details' onClick={()=>{
-        const state='edit'
-        navigate(`../editoradd/${state}`)}}></Button>
+        navigate(`../editoradd/edit`)}}></Button>
     </div>
    </>
 }

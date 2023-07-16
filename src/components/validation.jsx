@@ -55,5 +55,23 @@ export const validateMemory=(memory)=>{
 export const validateLogo=(logo)=>{
     if(!logo){
         return 'required';
-    }
+    }else return ''
+};
+
+export const validateManagerId=(managerId)=>{
+    if(!managerId){
+        return 'required'
+    }else return ''
+};
+
+export const validateOwner=(owner)=>{
+    if(!owner){
+        return 'required'
+    }else return ''
+};
+
+export const validateDomain=(arrdomain)=>{
+    if(!arrdomain[0]&&!arrdomain[1]&&!arrdomain[2]){
+        return 'required'
+    }else return ''
 };

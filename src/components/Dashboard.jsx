@@ -3,12 +3,14 @@ import { getAllWebsites } from '../api/api';
 import { useDispatch } from 'react-redux';
 import { set_all_website } from '../redux/dataActions';
 import { Card } from '../components/card';
+import Button from '@mui/material/Button';
 import './card.css';
+import { useNavigate } from 'react-router';
 export const Dashboard = () => {
 
 	const [allwebsites, setallwebsites] = useState([]);
 	const dispatch = useDispatch();
-
+    const navigate=useNavigate();
 	useEffect(() => {
 		async function fetchData() {
 			const response = await getAllWebsites();
@@ -30,6 +32,11 @@ export const Dashboard = () => {
 				)
 			)
 		}
+		<Button variant="outlined" size="large" className='buttonAdd'
+		onClick={()=>{
+			navigate(`../editoradd/add`)}}>
+          +
+        </Button>
 	</>;
 
 };
