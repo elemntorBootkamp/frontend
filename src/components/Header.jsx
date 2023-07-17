@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from './button';
 import './header.css';
@@ -44,7 +46,7 @@ export const
 				{
 					component.localeCompare('') === 0 ?
 						<>
-							<label>On this website you can purchase and manage your website's cloud environment</label>
+							<label>On this website you can purchase and manage your websites cloud environment</label>
 						</> : <></>
 				}
 
