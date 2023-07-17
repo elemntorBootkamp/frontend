@@ -54,7 +54,7 @@ export const Edit = () => {
             if(params.state==='edit'){
                 updateWebsite(currentWebSite);
             }else{
-                addWebsite(currentWebSite);
+                addWebsite(domainObject);
             } 
         }
     };
@@ -185,6 +185,16 @@ export const Edit = () => {
         >
             <h4 id="title">{params.state==="add"?"Add website":"Edit"}</h4>
             <div>
+            <TextField
+                    {...errorManagerId}
+                    id="standard-error"
+                    label="Manager id"
+                    defaultValue={currentWebSite.managerId}
+                    variant="standard"
+                    helperText={helperManagerId}
+                    onChange={(e) => setManagerId(e.target.value)}
+                />
+                <br></br>  
                 <TextField
                     {...errorTitle}
                     id="standard-error"
@@ -196,27 +206,6 @@ export const Edit = () => {
                 />
                 <br></br>
                 <TextField
-                    {...errorManagerId}
-                    id="standard-error"
-                    label="Manager id"
-                    defaultValue={currentWebSite.managerId}
-                    variant="standard"
-                    helperText={helperManagerId}
-                    onChange={(e) => setManagerId(e.target.value)}
-                />
-                <br></br>  
-                <TextField
-                    {...errorOwner}
-                    id="standard-error"
-                    label="Owner"
-                    defaultValue={currentWebSite.owner}
-                    variant="standard"
-                    helperText={helperTextOwner}
-                    onChange={(e) => setOwner(e.target.value)}
-
-                />
-                <br></br>
-                <TextField
                     {...errorDescription}
                     id="Standard-error"
                     label="Description"
@@ -225,8 +214,24 @@ export const Edit = () => {
                     onChange={(e) => setDescription(e.target.value)}
                     helperText={helperTextDescription}
                 />
+                <br></br>             
+               {
+                arrDomain.map((domain,index)=>
+                    <>
+                    <TextField
+                    {...errorDomain}
+                    id="standard-error"
+                    label="Domain"
+                    variant="standard"
+                    defaultValue={domain}
+                    onBlur={(e) => setDomain(e.target.value,index)}
+                    helperText={helperTextDomain}
+                />            
                 <br></br>
-                <TextField
+                </>
+                )
+               }
+               <TextField
                     {...errorTypeOfDomain}
                     id="standard-error"
                     label="Type of domain"
@@ -235,38 +240,7 @@ export const Edit = () => {
                     onChange={(e) => setTypeOfDomain(e.target.value)}
                     helperText={helperTextTypeOfDomain}
                 />
-                <br></br>
-             
-              <TextField
-                    {...errorDomain}
-                    id="standard-error"
-                    label="Domain"
-                    variant="standard"
-                    defaultValue={arrDomain[0]}
-                    onBlur={(e) => setDomain(e.target.value,0)}
-                    helperText={helperTextDomain}
-                />            
-                <br></br>
-                <TextField
-                    {...errorDomain}
-                    id="standard-error"
-                    label="Domain"
-                    variant="standard"
-                    defaultValue={arrDomain[1]}
-                    onBlur={(e) => setDomain(e.target.value,1)}
-                    helperText={helperTextDomain}
-                />            
-                <br></br>
-                <TextField
-                    {...errorDomain}
-                    id="standard-error"
-                    label="Domain"
-                    variant="standard"
-                    defaultValue={arrDomain[2]}
-                    onBlur={(e) => setDomain(e.target.value,2)}
-                    helperText={helperTextDomain}
-                />            
-                <br></br>
+                <br></br> 
                 <TextField
                     id="standard-select-currency"
                     select
@@ -303,6 +277,16 @@ export const Edit = () => {
                     variant="standard"
                     onChange={(e)=>{setLogo(e.target.value)}}
                     helperText={helperTextLogo}
+                />
+                <br></br>
+                <TextField
+                    {...errorOwner}
+                    id="standard-error"
+                    label="Owner"
+                    defaultValue={currentWebSite.owner}
+                    variant="standard"
+                    helperText={helperTextOwner}
+                    onChange={(e) => setOwner(e.target.value)}
                 />
                 <br></br>
                 <div id='buttonform'>

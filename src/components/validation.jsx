@@ -71,6 +71,7 @@ export const validateOwner=(owner)=>{
 };
 
 export const validateDomain=(arrdomain)=>{
+    debugger
     if(!arrdomain[0]&&!arrdomain[1]&&!arrdomain[2]){
         return 'required'
     }else return ''

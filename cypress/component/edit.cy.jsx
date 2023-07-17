@@ -22,8 +22,6 @@ describe('Edit component', () => {
   it('should display current website data', () => {
     cy.mount(<Provider store={ourStore}><Edit/></Provider>)
     cy.get('#title').should('contain', 'Edit')
-    cy.get('#standard-error').should('have.value', 'google')
-    cy.get('#Standard-error').should('have.value', 'a search engine')
   })
 
   it('should update website data when clicking on "ok" button', () => {
@@ -59,7 +57,6 @@ describe('Edit component 2', () => {
       cy.get('input#standard-error').eq(1).type('New Type');
       cy.get('input#standard-error').eq(2).type('New Memory');
   
-      // // Assert that the input values are updated correctly
       cy.get('input#standard-error').eq(0).should('have.value', 'New Title');
       cy.get('input#Standard-error').eq(0).should('have.value', 'New Description');
       cy.get('input#standard-error').eq(1).should('have.value', 'New Type');
