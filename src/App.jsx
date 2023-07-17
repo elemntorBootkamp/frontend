@@ -21,7 +21,7 @@ function App() {
 				<BrowserRouter>
     
 					<Page></Page>
-					<Nav></Nav>
+					{/* <Nav></Nav> */}
         
 					<Routing></Routing>
     

@@ -4,7 +4,7 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { useKeycloak } from '@react-keycloak/web';
-import {checkReact} from '../API/api';
+// import {checkReact} from '../API/api';
 import axios from 'axios';
 const Nav = () => {
 	

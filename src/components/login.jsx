@@ -22,6 +22,7 @@ export const Login = () => {
 			debugger;
 			// getToken(keycloak.token);
 			
+
 		}
 	}, [initialized, keycloak.authenticated]);
 

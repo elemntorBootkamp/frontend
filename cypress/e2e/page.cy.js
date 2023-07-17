@@ -44,3 +44,4 @@ describe('Page component', () => {
 		cy.url().should('contain', '/dashboard');
 	});
 });
+//npx cypress open

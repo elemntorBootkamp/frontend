@@ -1,8 +1,10 @@
-
-import PropTypes from 'prop-types';
-// import { Button } from '../components/Button';
-import './header.css';
+/* eslint-disable react/prop-types */
 import React from 'react';
+import PropTypes from 'prop-types';
+// import { Button } from './button';
+import './header.css';
+
+
 
 import { Login } from './login';
 
@@ -37,7 +39,7 @@ export const
 
 
 
-							<button onClick={() => document.getElementById('id01').style.display = 'block'} style={{ width: '45px', height: '45px', borderRadius: '50%', backgroundColor: 'white' }}><img src={'icons8-customer-30.png'} ></img></button>
+						
 
 
 						</>
@@ -48,7 +50,7 @@ export const
 				{
 					component.localeCompare('') === 0 ?
 						<>
-							<label>On this website you can purchase and manage your website's cloud environment</label>
+							<label>On this website you can purchase and manage your websites cloud environment</label>
 						</> : <></>
 				}
 
