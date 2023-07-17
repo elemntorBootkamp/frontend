@@ -1,9 +1,10 @@
+/* eslint-disable no-debugger */
 /* eslint-disable no-mixed-spaces-and-tabs */
 
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { useKeycloak } from '@react-keycloak/web';
-
+import {checkReact} from '../API/api';
 import axios from 'axios';
 const Nav = () => {
 	
@@ -27,25 +28,28 @@ const Nav = () => {
 	}, [initialized, keycloak.authenticated]);
 	
 	const handleApiCall = async () => {
-		try {
+		debugger;
+		 checkReact();
+		// try {
 			
-			console.log('😛');
-			const config = {
-				headers: { Authorization: `Bearer ${keycloak.token}` },
-			};
-			console.log('😛😛');
-			 const response = await axios.get('http://localhost:8090/protected',config);
-			console.log('😛😛😛');
-			 console.log(response.data);
-		} catch (error) {
-			console.error(error);
-		}
+		// 	console.log('😛');
+		// 	const config = {
+		// 		headers: { Authorization: `Bearer ${keycloak.token}` },
+		// 	};
+		// 	console.log('😛😛');
+		// 	 const response = await axios.get('http://localhost:8090/protected',config);
+		// 	console.log('😛😛😛');
+		// 	 console.log(response.data);
+		// } catch (error) {
+		// 	console.error(error);
+		// }
 	};
+	
 	const handleLogout = async () => {
 		await keycloak.logout();
 		setAuthenticated(false);
 	};
-	debugger;
+	
 	const handleLogin = () => {
 		keycloak.login();
 		console.log(keycloak.authenticated());
@@ -56,21 +60,7 @@ const Nav = () => {
 	const handleClick = () => {
 		keycloak.accountManagement();
 	};
-	// const handleApiCall = async () => {
-	//     try {
-	//       // Add the token to the Authorization header
-	//       const config = {
-	//         headers: { Authorization: `Bearer ${keycloak.token}` },
-	//       };
-	//       const response = await axios.get('http://localhost:8090/api/protected', config);
-	//       console.log(response.data);
-	//     } catch (error) {
-	//       console.error(error);
-	//     }
-	//   };
 	
-
-
 	return (
 
 		<div>
@@ -84,9 +74,8 @@ const Nav = () => {
 					<button onClick={handleLogout}>Logout</button>
 					<button onClick={handleClick}>Edit Profile</button>
 					<button onClick={handleApiCall}>Call Protected API</button>
+					
 				</>
-
-
 			) : (
 				<>
 					<button onClick={handleLogin}>Login</button>
