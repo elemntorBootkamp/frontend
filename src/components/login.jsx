@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 /* eslint-disable no-debugger */
 import { Button } from '../components/Button';
 import React from 'react';
@@ -6,11 +7,10 @@ import { useKeycloak } from '@react-keycloak/web';
 import { useDispatch } from 'react-redux';
 import { sendTokenStore } from '../Redux/action';
 import { setUserId } from '../Redux/action';
-// import {getToken} from '../API/api';
 import axios from 'axios';
-
+import { useNavigate } from 'react-router';
 export const Login = () => {
-
+    const nevigate=useNavigate();
 	const Dispatch = useDispatch();
 	const { keycloak, initialized } = useKeycloak();
 	const [authenticated, setAuthenticated] = useState(false);
@@ -38,6 +38,10 @@ export const Login = () => {
 	const handleSignUp = () => {
 		keycloak.register();
 	};
+	const ondashbord = () => {
+		nevigate('/dashboard');
+	};
+	
 	
 	axios.interceptors.request.use(
 		(config) => {
@@ -69,6 +73,7 @@ export const Login = () => {
 				<>
 					<Button size="small" onClick={handleLogout} label="Log out" />
 					<h5>Welcome, {keycloak.tokenParsed.preferred_username}!</h5>
+					<Button size="small" onClick={ondashbord} label="dashboard" />
 
 				</>
 			) : (
