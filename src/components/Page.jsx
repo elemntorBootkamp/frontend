@@ -1,8 +1,7 @@
 import React from 'react';
-import { Header } from './header';
-
-import './page.css';
+import { Header } from './Header';
 import { useNavigate } from 'react-router';
+import './page.css';
 
 export const Page = () => {
 	const [componnent, setcomponent] =React.useState('');
@@ -27,6 +26,10 @@ export const Page = () => {
 				onsignup={() => {
 					navigate('./signup');
 					setcomponent('signup');}}
+				onbackup={() => {
+					navigate('./backup');
+					setcomponent('backup');
+				}}
 			/>
 
 			<section className="storybook-page">

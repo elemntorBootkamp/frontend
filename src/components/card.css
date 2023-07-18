@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Spline+Sans:wght@300;400;500;600;700&display=swap");
-
 .modal {
     position: fixed; 
     z-index: 1; 
@@ -70,7 +69,6 @@ body {
 .allCards{
   margin: 10px;
   align-items: center;
-
 }
 .cards{
   grid-template-columns: 1fr 1fr 1fr;
