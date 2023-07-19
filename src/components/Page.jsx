@@ -24,15 +24,12 @@ export const Page = () => {
 				ondashbord={() => {
 					navigate('/dashboard');
 					setcomponent('dashboard');}}
+					
 				onsignup={() => {
 					navigate('./signup');
 					setcomponent('signup');}}
 			/>
-
-			<section className="storybook-page">
-				<div className="tip-wrapper">
-				</div>
-			</section>
+			
 		</> 
 	);
 };
