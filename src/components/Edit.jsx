@@ -135,7 +135,10 @@ console.log(userSelector);
                 };       
              const ToEdit=()=>{
               setisEditMode(!isEditMode);
-             }                 
+             } 
+             const EditComponent=()=>{
+              KeycloakSelector.accountManagement();
+            }                
     return<>
 
 <div id="id01" class="modal" >
@@ -163,6 +166,8 @@ console.log(userSelector);
       <button type="button" onClick={cancel} class="cancelbtn">Cancel</button>
       <Button size="small" onClick={handleUpdateUserInfo } label="SAVE" />
       <Button size="small" onClick={ToEdit}  label="Edit" />
+      <Button primary size="small" onClick={EditComponent} label="toEdit" />
+
     </div>
   </form>
 </div>
