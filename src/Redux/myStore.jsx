@@ -1,11 +1,12 @@
-import { createStore, combineReducers } from "redux";
-import {dataReducer } from "./dataReducer";
+// eslint-disable-next-line no-unused-vars
+import { createStore, combineReducers } from 'redux';
+import {dataReducer } from './dataReducer';
 
 
 const reducers =dataReducer ;
  
-export const ourStore = createStore(reducers)
+export const ourStore = createStore(reducers);
 
- window.store=ourStore;
+window.store=ourStore;
 
 
