@@ -1,23 +1,35 @@
 import React from 'react';
-import { Provider } from 'react-redux'
-import { ourStore } from './redux/myStore'
-import { BrowserRouter } from 'react-router-dom'
-import { Routing } from '../allrouting'
-import { Page } from '../src/components/Page'
-import './App.css'
-
+import { Provider } from 'react-redux';
+import './App.css';
+import { ourStore } from './Redux/myStore';
+import { BrowserRouter} from 'react-router-dom';
+import { Routing } from '../allrouting';
+import { Page } from '../src/components/Page';
+import { ReactKeycloakProvider } from '@react-keycloak/web';
+import keycloak from './components/keycloak';
+import Nav from './components/login1';
 
 function App() {
-  
+
+	
+	
 
 	return <>
-    <Provider store={ourStore}>
-    <BrowserRouter>
-    <Page></Page>
-    <Routing></Routing>
-    </BrowserRouter>
-    </Provider>
-  </>
+	
+		<ReactKeycloakProvider authClient={keycloak}>
+			<Provider store={ourStore}>
+				<BrowserRouter>
+    
+					<Page></Page>
+					{/* <Nav></Nav> */}
+        
+					<Routing></Routing>
+    
+				</BrowserRouter>
+			</Provider>
+		</ReactKeycloakProvider>
+	</>;
+
 
 }
 

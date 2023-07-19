@@ -1,34 +1,49 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button } from './button';
+// import { Button } from './button';
 import './header.css';
 
 
-export const
 
+import { Login } from './login';
+
+export const
+	// eslint-disable-next-line no-unused-vars
 	Header = ({ onLogin, onLogout, ondashbord, onsignup, component }) => {
+		// When the user clicks anywhere outside of the modal, close it
+		var modal = document.getElementById('id01');
+
+		// {
+		// 	window.onclick = function (event) {
+		// 		if (event.target == modal) {
+		// 			modal.style.display = 'none';
+		// 		}
+		// 	};
+		// }
+
+
 		return <>
 			<header>
 				<div className="storybook-header">
 					<div>
 						<h1>Elementor</h1>
 					</div>
+
 					<div>
-						{
-							component.localeCompare('login')===0 || component.localeCompare('signup')===0?
-								<> <Button size="small" onClick={onLogout} label="Log out" />
-									<Button size="small" onClick={ondashbord} label="dashboard" />
-								</>
-								:
-								component.localeCompare('dashboard')===0 ?
-									<Button size="small" onClick={onLogout} label="Log out" />
-									:
-									<>
-										<Button size="small" onClick={onLogin} label="Log in" />
-										<Button primary size="small" onClick={onsignup} label="Sign up" />
-									</>
-						}
+						<>
+							<Login></Login>
+							{/* <Button size="small" onClick={handleLogout} label="Log out" />
+							<Button size="small" onClick={handleLogin} label="Log in" />
+							<Button primary size="small" onClick={handleSignUp} label="Sign up" /> */}
+
+
+
+						
+
+
+						</>
+
 
 					</div>
 				</div>
