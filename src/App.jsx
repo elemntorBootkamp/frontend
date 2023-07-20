@@ -7,7 +7,7 @@ import { Routing } from '../allrouting';
 import { Page } from '../src/components/Page';
 import { ReactKeycloakProvider } from '@react-keycloak/web';
 import keycloak from './components/keycloak';
-import Nav from './components/login1';
+
 
 function App() {
 
@@ -21,7 +21,7 @@ function App() {
 				<BrowserRouter>
     
 					<Page></Page>
-					{/* <Nav></Nav> */}
+				
         
 					<Routing></Routing>
     

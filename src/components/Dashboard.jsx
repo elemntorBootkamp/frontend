@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { useEffect, useState } from 'react';
 import { getAllWebsites } from '../API/api';
 import { useDispatch } from 'react-redux';
@@ -12,7 +13,7 @@ export const Dashboard = () => {
 	useEffect(() => {
 		async function fetchData() {
 			const response = await getAllWebsites();
-			dispatch(set_all_website(response))
+			dispatch(set_all_website(response));
 			setallwebsites(response);
 		}
 		fetchData();
