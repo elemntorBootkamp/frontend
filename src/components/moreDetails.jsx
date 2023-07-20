@@ -22,7 +22,7 @@ export const MoreDetails=({website})=>{
 	const handleDelete = async () => {
 		setShowConfirmation(false);
 		deleteWebsite(website._id, '1234');
-		window.location.reload(false);
+		window.location.reload(true);
 
 	};
 	const handleCancel = () => {

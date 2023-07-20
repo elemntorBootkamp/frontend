@@ -35,15 +35,9 @@ export const getAllWebsites = async () => {
 
 
 export const deleteWebsite = async (websiteid, userid) => {
-	alert('delete website');
-	alert(websiteid);
-	alert(userid);
-
 	const SERVERURL = import.meta.env.VITE_SERVER_URL;
 	const userId = userid;
-	// const userId = useSelector((state) => state.userId);
 	const websiteId = websiteid;
-	console.log('i\'m in delete function');
 
 	try {
 		const response = await axios.delete(`${SERVERURL}/website/${websiteId}/${userId}`, {});
