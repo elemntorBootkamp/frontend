@@ -35,7 +35,7 @@ export const
 				{
 					component.localeCompare('') === 0 ?
 						<>
-							<label>On this website you can purchase and manage your websites cloud environment</label>
+							<h1>On this website you can purchase and manage your websites cloud environment</h1>
 						</> : <></>
 				}
 			</header>

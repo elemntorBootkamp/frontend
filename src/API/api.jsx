@@ -3,10 +3,12 @@ import axios from 'axios';
 export const updateWebsite = async (website) => {
     const SERVERURL = import.meta.env.VITE_SERVER_URL;
     try {
-        const { data } = await axios.put(`${SERVERURL}/website/`, website)
+        const data = await axios.put(`${SERVERURL}/website/`, website)
+        alert(data.data)
         return data;
     }
     catch (err) {
+       
         console.log(err);
     }
 }

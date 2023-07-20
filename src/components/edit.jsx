@@ -33,6 +33,7 @@ export const Edit = () => {
 	}, []);
 
 	const handleUpdate = async () => {
+		
 		if(errorDescription.error||errorMemory.error||errorTitle.error ||errorTypeOfDomain.error){
 			alert('The form is incorrect, it is not possible to save changes');
 		}else {
@@ -190,7 +191,7 @@ export const Edit = () => {
 				/>
 				<br></br>
 				<div id='buttonform'>
-					<Button primary label="ok" onClick={async()=>{handleUpdate();}}></Button>
+					<Button primary label="ok" onClick={async()=>{handleUpdate()}}></Button>
 				</div>
 			</div>
 		</Box>
