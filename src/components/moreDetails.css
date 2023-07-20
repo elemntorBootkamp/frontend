@@ -8,3 +8,24 @@
     margin-top: 15px;
     margin-bottom: 10px;
 }
+
+#one{
+    color: #333;
+    background-color: #b1ee50;
+    margin: 10px;
+}
+
+.alert{
+    margin-left: -60px;
+    position: fixed;
+    top: 0px;
+    background-color: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+    width: 40%;
+    padding: 20px;
+    text-align: center;
+}
+
+#modalBtn{
+    margin: 10px;
+}

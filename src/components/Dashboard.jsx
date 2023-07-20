@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { set_all_website } from '../redux/dataActions';
 import { Card } from '../components/card';
 import './card.css';
+import React from 'react';
 export const Dashboard = () => {
 
 	const [allwebsites, setallwebsites] = useState([]);
@@ -12,7 +13,7 @@ export const Dashboard = () => {
 	useEffect(() => {
 		async function fetchData() {
 			const response = await getAllWebsites();
-			dispatch(set_all_website(response))
+			dispatch(set_all_website(response));
 			setallwebsites(response);
 		}
 		fetchData();
