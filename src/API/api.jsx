@@ -40,7 +40,7 @@ export const deleteWebsite = async (websiteid, userid) => {
 	const websiteId = websiteid;
 
 	try {
-		const response = await axios.delete(`${SERVERURL}/website/${websiteId}/${userId}`, {});
+		const response = await axios.delete(`${SERVERURL}/website/${websiteId}/${userId}`);
 		return response.data;
 
 	}
